@@ -17,10 +17,10 @@ jobs:
       uses: martinbeentjes/npm-get-version-action@master
     - name: Login to DockerHub
       env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}   
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Install dev dependencies
       run: |
         npm i
@@ -31,9 +31,9 @@ jobs:
       env:
         PACKAGE_VERSION: ${{ steps.package-version.outputs.current-version}}
       run: |
-        docker build ./ -t wesageio/demo-ems-ui:$PACKAGE_VERSION
+        docker build ./ -t wesageio/demo-ems:ui-$PACKAGE_VERSION
     - name: Build Docker image to DockerHub repo
       env:
         PACKAGE_VERSION: ${{ steps.package-version.outputs.current-version}}
       run: |
-        docker push wesageio/demo-ems-ui:$PACKAGE_VERSION
+        docker push wesageio/demo-ems:ui-$PACKAGE_VERSION
