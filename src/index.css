@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+body > .MuiDrawer-modal {
+    display: none;
+}
+
+.RaAppBar-toolbar {
+    min-height: 48px !important;
+}
+
+.MuiAppBar-positionFixed {
+    background: linear-gradient(to right, #657573 0%, #61a99e 35%), linear-gradient(to bottom, #489c52 0%, #6f4ceb 50%)
+}
+
+.nav-menu > .hamburger {
+    display: none !important;
+}
+
+.nav-menu > .hamburger-menu {
+    display: none !important;
+}
+
+@media only screen and (min-width:1101px) {
+    .hamburgerDashboardMenu {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .nav-menu > .resource-links, .dashboardIcon {
+        display: none !important;
+    }
+    .nav-menu > .hamburger {
+        display: block !important;
+    }
+    .nav-menu > .hamburger-menu {
+        display: block !important;
+        position: absolute;
+        background-color: #647d7a;
+        left: 0;
+        top: 48px;
+        box-shadow: 5px 5px 10px #525252;
+    }
+}
+
+.MuiDialog-paper {
+    max-width: 800px !important;
+    overflow-y: auto !important;
+    height: auto;
+}
+
+.pg-viewer-wrapper {
+    overflow: unset !important;
+    width: 800px;
+}
+
+.react-grid-Canvas {
+    height: auto !important;
+    overflow: unset !important;
+}
+
+.pdf-canvas {
+    overflow-y: unset;
+    height: auto;
+}
+
+.pdf-canvas > canvas {
+    width: auto;
+    overflow-y: scroll;
+}
+
+.react-grid-Container {
+    width: 800px !important;
+    height: 500px;
+}
+
+.react-grid-Main {
+    height: 500px;
+}
+
+.react-grid-Grid {
+    height: 500px;
+}
+
+.react-grid-HeaderRow {
+    overflow: unset !important;
+}
+
+.react-grid-Canvas {
+    widows: 800 !important;
+}
+
+.mq-dataset-results {
+    overflow-y: scroll;
+    height: 150px;
+}
