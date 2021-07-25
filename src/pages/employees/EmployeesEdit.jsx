@@ -10,24 +10,22 @@ import {
     DateInput,
     ReferenceArrayInput,
     AutocompleteArrayInput,
-    AutocompleteInput
+    AutocompleteInput,
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
 import { styles } from './EmployeesStyles';
 import BackButton from '../../components/BackButton';
+import { EditToolbar } from '../../components/Toolbar/EditToolbar';
 
-const ImapAccountTitle = ({ record }) => {
-    return <span>Imap Account {record ? `"${record.host}"` : ''}</span>;
-};
 
 export const EmployeesEdit = props => {
     const classes = styles();
 
     return (
-        <Edit title={<ImapAccountTitle />} undoable={false} {...props}>
-            <SimpleForm className={classes.createForm}>
+        <Edit undoable={false} {...props}>
+            <SimpleForm toolbar={<EditToolbar />} redirect="list" className={classes.createForm}>
                 <Card>
                     <BackButton>
                         <BackIcon />

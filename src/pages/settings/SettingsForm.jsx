@@ -18,6 +18,7 @@ const checkPass = (value, allValues) => {
 
 
 export const SettingsForm = props => {
+
     return (
         <FormWithRedirect
             {...props}

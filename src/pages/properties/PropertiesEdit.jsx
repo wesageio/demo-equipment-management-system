@@ -17,13 +17,15 @@ import { styles } from './PropertiesStyles';
 import { FilesCreateEdit } from '../../components/PreviewFiles/FilesCreateEdit';
 import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
 import BackButton from '../../components/BackButton';
+import { EditToolbar } from '../../components/Toolbar/EditToolbar';
+
 
 export const PropertiesEdit = props => {
     const classes = styles();
 
     return (
         <Edit {...props} undoable={false}>
-            <SimpleForm redirect="list" className={classes.createForm}>
+            <SimpleForm toolbar={<EditToolbar />} redirect="list" className={classes.createForm}>
                 <Card>
                     <BackButton>
                         <BackIcon />

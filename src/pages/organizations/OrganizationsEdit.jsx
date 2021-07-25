@@ -3,7 +3,7 @@ import {
     Edit,
     SimpleForm,
     TextInput,
-    NumberInput
+    NumberInput,
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
@@ -12,13 +12,15 @@ import { styles } from './OrganizationsStyles';
 import BackButton from '../../components/BackButton';
 import LocationInput from '../../components/InputFields/LocationInput';
 import { WebSiteInput } from '../../components/InputFields/WebSiteInput';
+import { EditToolbar } from '../../components/Toolbar/EditToolbar';
+
 
 export const OrganizationsEdit = props => {
     const classes = styles();
 
     return (
         <Edit {...props} undoable={false}>
-            <SimpleForm className={classes.createForm}>
+            <SimpleForm toolbar={<EditToolbar />}  redirect="list" className={classes.createForm}>
                 <Card>
                     <BackButton>
                         <BackIcon />

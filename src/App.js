@@ -7,8 +7,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import Dashboard from './pages/dashboard/Dashboard';
 import { EmployeesList, EmployeesEdit, EmployeesCreate } from './pages/employees';
-import { PropertiesList, PropertiesCreate, PropertiesEdit } from './pages/Properties';
-import { OrganizationsList, OrganizationsCreate, OrganizationsEdit } from './pages/Organizations';
+import { PropertiesList, PropertiesCreate, PropertiesEdit } from './pages/properties';
+import { OrganizationsList, OrganizationsCreate, OrganizationsEdit } from './pages/organizations';
 import { SettingsEdit } from './pages/settings';
 import NavBarLayout from './components/Navigation/NavBarLayout';
 

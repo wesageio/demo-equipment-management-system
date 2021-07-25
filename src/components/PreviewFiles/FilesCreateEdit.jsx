@@ -38,7 +38,7 @@ export const FilesCreateEdit = ({ record, source }) => {
         setView(false);
     };
 
-    if ((record && !record.hasOwnProperty('data') && !record.path.hasOwnProperty('rawFile') && record.path !== null) || source === undefined) {
+    if ((record && !record.hasOwnProperty('data') && record.path !== null &&  !record.path.hasOwnProperty('rawFile')) || source === undefined) {
         return (
             <div className={classes.attachmentBlock}>
                 <div style={{ width: '100%', height: '70px', display: 'flex' }}>
