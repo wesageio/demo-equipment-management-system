@@ -25,6 +25,7 @@ import ImportButtonCsv from '../../components/ImportCsv';
 import { FilesListView } from '../../components/PreviewFiles/FilesListView';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { PropertiesMobileList } from './PropertiesMobileList';
+import { Empty } from '../../components/Toolbar/EmptyList';
 
 const ListActions = (props) => {
     const {
@@ -132,7 +133,7 @@ export const PropertiesList = (props) => {
             {...props}
             aside={!isSmall && <PropertiesFilter className={card} />}
             className={listBlock}
-            empty={false}
+            empty={<Empty />}
             actions={<ListActions />}
             perPage={count}
             pagination={<RowsPerPage count={count} />}

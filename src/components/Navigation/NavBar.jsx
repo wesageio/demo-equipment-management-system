@@ -3,6 +3,7 @@ import { AppBar } from 'react-admin';
 
 import { styles } from './NavBarStyles';
 import { Menu } from './Menu';
+import { ChangeTheme } from './ChangeTheme';
 
 const NavBar = props => {
     const { root } = styles();
@@ -10,6 +11,7 @@ const NavBar = props => {
     return (
         <AppBar {...props} className={root}>
             <Menu />
+            <ChangeTheme />
         </AppBar>
     );
 };

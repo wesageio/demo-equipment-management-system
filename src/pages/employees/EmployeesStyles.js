@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 export const styles = makeStyles({
     rootTable: {
         "& .MuiTableRow-head .MuiTableCell-head": {
-            color: 'black',
             padding: '5px',
             textAlign: 'center',
         },
         "& .datagrid-body .MuiTableCell-sizeSmall": {
             padding: '1px',
             border: '1px solid #e0e0e0',
+            borderLeft: 'unset',
             textAlign: 'center',
             // maxWidth: '65px',
             overflowWrap: 'break-word',

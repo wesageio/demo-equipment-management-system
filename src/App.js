@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { Admin, Resource, defaultTheme } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
 import { Dialog } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
 
 import Dashboard from './pages/dashboard/Dashboard';
 import { EmployeesList, EmployeesEdit, EmployeesCreate } from './pages/employees';
@@ -16,16 +15,7 @@ import authProvider from './providers/authProvider';
 import dataProvider from './providers/dataProvider';
 
 import { initiateSocket } from './utils/connectGateway';
-import reducer from './store/reducer';
-
-
-const theme = createMuiTheme({
-    ...defaultTheme,
-    sidebar: {
-        width: 0,
-        closedWidth: 0,
-    },
-});
+import themeReducer from './store/themeReducer';
 
 const i18nProvider = polyglotI18nProvider(() =>
     englishMessages,
@@ -40,8 +30,7 @@ const App = () => {
 
     return (
         <Admin
-            customReducers={{ customReducer: reducer }}
-            theme={theme}
+            customReducers={{ theme: themeReducer }}
             layout={NavBarLayout}
             i18nProvider={i18nProvider}
             dataProvider={dataProvider}

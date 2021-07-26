@@ -31,6 +31,7 @@ import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
 import { FilesListView } from '../../components/PreviewFiles/FilesListView';
 import { EmployeesMobileList } from './EmployeesMobileList';
+import { Empty } from '../../components/Toolbar/EmptyList';
 
 const ListActions = (props) => {
     const {
@@ -195,7 +196,7 @@ export const EmployeesList = (props) => {
         <List
             aside={!isSmall && <ImapAccountFilter className={card} />}
             className={listBlock}
-            empty={false}
+            empty={<Empty />}
             actions={<ListActions />}
             perPage={count}
             pagination={<RowsPerPage count={count} />}

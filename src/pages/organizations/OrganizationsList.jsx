@@ -21,6 +21,7 @@ import { styles } from './OrganizationsStyles';
 import ImportButtonCsv from '../../components/ImportCsv';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { OrganizationsMobileList } from './OrganizationsMobileList';
+import { Empty } from '../../components/Toolbar/EmptyList';
 
 const ListActions = (props) => {
     const {
@@ -95,7 +96,7 @@ export const OrganizationsList = (props) => {
         <List
             aside={!isSmall && <OrganizationsFilter className={card} />}
             className={listBlock}
-            empty={false}
+            empty={<Empty />}
             actions={<ListActions />}
             {...props}
             perPage={count}

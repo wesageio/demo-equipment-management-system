@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 export const styles = makeStyles({
     rootTable: {
         "& .MuiTableRow-head .MuiTableCell-head": {
-            color: 'black',
             padding: '5px',
             textAlign: 'center',
         },
@@ -12,6 +11,7 @@ export const styles = makeStyles({
             border: '1px solid #e0e0e0',
             textAlign: 'center',
             maxWidth: '65px',
+            borderLeft: 'unset',
             overflowWrap: 'break-word',
         },
         "& .MuiToolbar-gutters": {

@@ -12,10 +12,11 @@ const prepareUpdateBody = async (body) => {
             return element !== undefined && element.path !== null;
         });
         const newAttachments = body.attachments.filter((item) => {
-            return item.path.hasOwnProperty('rawFile')
+            return item.path
         })
         const oldAttachments = body.attachments.filter((item) => {
-            return !item.path.hasOwnProperty('rawFile')
+            delete item.s3PresignedUrl;
+            return !item.path
         })
         const formatedAttachments = await convertFileToBase64(newAttachments);
         const newData = Object.assign({}, body, { attachments: oldAttachments.concat(formatedAttachments)

@@ -18,8 +18,14 @@ body > .MuiDrawer-modal {
 }
 
 .MuiAppBar-positionFixed {
+    border: none !important;
+    box-shadow: 0px 5px 10px #808080a6 !important;
     background: linear-gradient(to right, #657573 0%, #61a99e 35%), linear-gradient(to bottom, #489c52 0%, #6f4ceb 50%)
 }
+
+header.MuiPaper-root button[aria-label="Refresh"] {
+    display: none;
+  }
 
 .nav-menu > .hamburger {
     display: none !important;

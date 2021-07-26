@@ -5,7 +5,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { previewStyles } from './PreviewFilesStyles';
 import Dialog from '@material-ui/core/Dialog';
 
-const hadoopUrl = window.env ? window.env.REACT_APP_HDFS : process.env.REACT_APP_HDFS;
+// const hadoopUrl = window.env ? window.env.REACT_APP_HDFS : process.env.REACT_APP_HDFS;
 
 export const FilesListView = ({ attachments }) => {
     const classes = previewStyles();
@@ -35,7 +35,7 @@ export const FilesListView = ({ attachments }) => {
                 >
                     {
                         attachments.map((item, index) => {
-                            return <img key={index} src={`${hadoopUrl + item.path}?op=OPEN`} style={{
+                            return <img key={index} src={item.s3PresignedUrl} style={{
                                 width: '100%',
                                 height: '400px',
                                 objectFit: 'contain'
@@ -56,7 +56,7 @@ export const FilesListView = ({ attachments }) => {
                     maxHeight: '100%',
                     maxWidth: '100%',
                     cursor: 'pointer'
-                }} src={hadoopUrl + attachments[0].path + '?op=OPEN'}
+                }} src={attachments[0].s3PresignedUrl}
                 onClick={() => handleOpen()}
                 />
             </div>

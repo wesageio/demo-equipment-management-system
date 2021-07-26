@@ -7,21 +7,21 @@ import FileViewer from 'react-file-viewer';
 import { previewStyles } from './PreviewFilesStyles';
 import Dialog from '@material-ui/core/Dialog';
 
-const hadoopUrl = window.env ? window.env.REACT_APP_HDFS : process.env.REACT_APP_HDFS;
+// const hadoopUrl = window.env ? window.env.REACT_APP_HDFS : process.env.REACT_APP_HDFS;
 
 const FileView = ({ record }) => {
     const type = record.type;
     if (type === 'jpg' || type === 'png' || type === 'jpeg') {
         return (
             <div>
-                <img style={{ width: '100%', height: '100%' }} src={hadoopUrl + record.path + '?op=OPEN'} />
+                <img style={{ width: '100%', height: '100%' }} src={record.s3PresignedUrl} />
             </div>
         )
     } else {
         return (
             <FileViewer
                 fileType={type}
-                filePath={record.path + '?op=OPEN'}
+                filePath={record.s3PresignedUrl}
             />
         )
     }
@@ -38,7 +38,7 @@ export const FilesCreateEdit = ({ record, source }) => {
         setView(false);
     };
 
-    if ((record && !record.hasOwnProperty('data') && record.path !== null &&  !record.path.hasOwnProperty('rawFile')) || source === undefined) {
+    if (record && record.s3PresignedUrl) {
         return (
             <div className={classes.attachmentBlock}>
                 <div style={{ width: '100%', height: '70px', display: 'flex' }}>
@@ -49,7 +49,7 @@ export const FilesCreateEdit = ({ record, source }) => {
                         maxHeight: '100%',
                         maxWidth: '100%',
                         cursor: 'pointer'
-                    }} src={hadoopUrl + record.path + '?op=OPEN'}
+                    }} src={record.s3PresignedUrl}
                     onClick={() => handleOpen()}
                     />
                 </div>

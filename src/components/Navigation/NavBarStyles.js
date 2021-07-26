@@ -8,6 +8,9 @@ export const styles = makeStyles({
         "& .MuiToolbar-dense, & .MuiToolbar-regular": {
             display: 'flex'
         },
+        "& .MuiToolbar-dense > .RaUserMenu-user": {
+            color: 'white'
+        },
         "& .MuiToolbar-regular > button:first-child": {
             display: 'none'
         },
@@ -24,6 +27,7 @@ export const styles = makeStyles({
                 color: 'white',
                 position: 'relative',
                 padding: '15px',
+                border: 'none'
             },
             "& a:hover": {
                 boxShadow: 'inset 150px 0 0 0 #84adb9',
