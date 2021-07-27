@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { cloneElement } from 'react';
+import { useHistory} from "react-router-dom";
 import {
     List,
     Datagrid,
@@ -79,12 +80,14 @@ const PropertiesFilter = (props) => (
                 <NumberInput label="Purchase cost ($)" source="purchaseCost" alwaysOn />
                 <SelectInput source="status"
                     choices={[
-                        { id: 'active', name: 'Active' },
-                        { id: 'reparation', name: 'Reparation' },
-                        { id: 'brokenNotFfixable', name: 'Broken - Not fixable' },
-                        { id: 'archived', name: 'Archived' },
+                        { id: 'Active', name: 'Active' },
+                        { id: 'Reparation', name: 'Reparation' },
+                        { id: 'Broken', name: 'Broken' },
+                        { id: 'Archived', name: 'Archived' },
                     ]}
                     alwaysOn
+                    emptyText="All"
+                    emptyValue=""
                 />
             </Filter>
         </CardContent>
@@ -95,8 +98,8 @@ const FilesListField = ({ record }) => {
     return (
         record.attachments && record.attachments.length !== 0 ?
             <FilesListView
-                attachments={record.attachments}
-                list={true}
+                record={record}
+                showName={false}
             /> : null
     )
 };
@@ -120,6 +123,8 @@ const DataList = (props) => {
 
 export const PropertiesList = (props) => {
     const { listBlock, card } = styles();
+    const history = useHistory();
+    const { status } = history.location.state || false;
     const [count, setCount] = useState(5);
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
@@ -134,6 +139,7 @@ export const PropertiesList = (props) => {
             aside={!isSmall && <PropertiesFilter className={card} />}
             className={listBlock}
             empty={<Empty />}
+            filter={status && { status }}
             actions={<ListActions />}
             perPage={count}
             pagination={<RowsPerPage count={count} />}

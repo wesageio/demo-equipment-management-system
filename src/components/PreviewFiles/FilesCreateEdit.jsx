@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-    FileInput,
-    FileField,
+    ImageInput,
+    ImageField,
 } from 'react-admin';
 import FileViewer from 'react-file-viewer';
 import { previewStyles } from './PreviewFilesStyles';
@@ -67,8 +67,8 @@ export const FilesCreateEdit = ({ record, source }) => {
         )
     }
     return (
-        <FileInput source={source} label="Related files">
-            <FileField source="src" target="_blank" title="title" />
-        </FileInput>
+        <ImageInput source={source} label="Related files" accept="image/png, image/jpg, image/jpeg">
+            <ImageField source="src" target="_blank" title="title" />
+        </ImageInput>
     )
 }

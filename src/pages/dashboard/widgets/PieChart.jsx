@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
+import { useHistory} from "react-router-dom";
 
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
@@ -73,8 +74,18 @@ const renderActiveShape = (props) => {
     );
 };
 
+const handleClick = (props, history) => {
+    const { payload } = props;
+    history.push({
+        pathname: '/properties',
+        search: 'status',
+        state: { status : payload.payload.name }
+    });
+}
+
 export const PieChartList = ({data}) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const history = useHistory();
     const onPieEnter = useCallback(
         (_, index) => {
             setActiveIndex(index);
@@ -93,8 +104,9 @@ export const PieChartList = ({data}) => {
                 activeShape={renderActiveShape}
                 data={data}
                 isAnimationActive={true}
-                cx={300}
+                cx={310}
                 cy={200}
+                onClick={(props) => handleClick(props, history)}
                 paddingAngle={2}
                 style={{cursor: 'pointer'}}
                 innerRadius="50%"

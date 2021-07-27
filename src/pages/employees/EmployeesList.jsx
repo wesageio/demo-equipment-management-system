@@ -20,7 +20,6 @@ import {
     NullableBooleanInput,
     ReferenceArrayField,
     SingleFieldList,
-    ChipField
 } from 'react-admin';
 import OfflineIcon from '@material-ui/icons/Cancel';
 import OnlineIcon from '@material-ui/icons/CheckCircle';
@@ -116,12 +115,11 @@ const ImapAccountFilter = (props) => {
     )
 };
 
-const TagsField = ({ record }) => {
+const AttachmentsField = ({ record }) => {
     return (
-        record.attachments && record.attachments.length !== 0 &&
         <FilesListView
-            attachments={record.attachments}
-            list={true}
+            record={record}
+            showName={true}
         />
     )
 };
@@ -150,17 +148,7 @@ const DataList = (props) => {
             >
                 <div className="propertyBlock">
                     <SingleFieldList style={{ margin: '0' }} linkType={false}>
-                        <TagsField record={props.resource} />
-                    </SingleFieldList>
-                    <SingleFieldList style={{ margin: '0' }}>
-                        <ChipField
-                            style={{
-                                background: 'transparent',
-                                color: '#3c8dbc',
-                                fontSize: '15px'
-                            }}
-                            source="name"
-                        />
+                        <AttachmentsField record={props.resource} />
                     </SingleFieldList>
                 </div>
             </ReferenceArrayField>

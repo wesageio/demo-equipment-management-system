@@ -5,6 +5,7 @@ export const styles = makeStyles({
         "& .MuiTableRow-head .MuiTableCell-head": {
             padding: '5px',
             textAlign: 'center',
+            border: 'none'
         },
         "& .datagrid-body .MuiTableCell-sizeSmall": {
             padding: '1px',
@@ -14,14 +15,20 @@ export const styles = makeStyles({
             // maxWidth: '65px',
             overflowWrap: 'break-word',
         },
+        "& .datagrid-body .column-property": {
+            maxWidth: '200px',
+        },
+        "& .datagrid-body .MuiTableCell-sizeSmall:last-child": {
+            borderRight: 'none',
+        },
         "& .MuiToolbar-gutters": {
             justifyContent: 'center'
         },
-        "& .column-property > div": {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'left',
-        },
+        // "& .column-property > div": {
+        //     display: 'flex',
+        //     // alignItems: 'center',
+        //     justifyContent: 'center',
+        // },
         "& .attachmentList": {
             margin: '0',
             flexDirection: 'column'

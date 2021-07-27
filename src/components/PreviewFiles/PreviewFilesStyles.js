@@ -10,8 +10,26 @@ export const previewStyles = makeStyles({
         color: '#2d2d2d',
     },
     viewIcon: {
+        objectFit: 'contain',
+        width: 'auto',
+        height: 'auto',
+        maxHeight: '100%',
+        maxWidth: '100%',
         cursor: 'pointer',
-        color: '#229db9'
+    },
+    imageBlock: {
+        width: '40px',
+        height: '40px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    attachmentName: {
+        width: '130px',
+        color: '#3c8dbc',
+        fontSize: '15px',
+        textAlign: 'right',
+        cursor: 'pointer'
     },
     carouselBlock: {
         position: 'relative',

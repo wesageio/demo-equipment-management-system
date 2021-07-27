@@ -86,7 +86,7 @@ export const PropertiesEdit = props => {
                                     choices={[
                                         { id: 'Active', name: 'Active' },
                                         { id: 'Reparation', name: 'Reparation' },
-                                        { id: 'BrokenNotFixable', name: 'Broken - Not fixable' },
+                                        { id: 'Broken', name: 'Broken' },
                                         { id: 'Archived', name: 'Archived' },
                                     ]}
                                     validate={[required()]}
