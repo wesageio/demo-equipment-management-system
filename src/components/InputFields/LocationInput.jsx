@@ -8,7 +8,7 @@ const LocationInput = ({ label, source }) => {
 
     useEffect(() => {
         const placeModule = placeSearch({
-            key: process.env.LOCATION_KEY,
+            key: process.env.REACT_APP_LOCATION_KEY,
             container: document.querySelector('#search')
         });
         setPLaceSearch(placeModule);

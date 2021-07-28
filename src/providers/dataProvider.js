@@ -1,10 +1,20 @@
 import { fetchUtils, HttpError } from 'react-admin';
-import { stringify } from 'query-string'; 
+import { stringify } from 'query-string';
 import Axios from 'axios';
 import { convertFileToBase64, getUpdatedData } from '../utils/utils';
 
 const apiUrl = window.env ? window.env.REACT_APP_ADMIN_API : process.env.REACT_APP_ADMIN_API;
 const httpClient = fetchUtils.fetchJson;
+
+const getToken = () => {
+    const JWTToken = localStorage.getItem('token');
+    return {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${JWTToken}`,
+        }
+    }
+}
 
 const prepareUpdateBody = async (body) => {
     if (body.attachments && body.attachments.length !== 0) {
@@ -19,7 +29,8 @@ const prepareUpdateBody = async (body) => {
             return !item.path
         })
         const formatedAttachments = await convertFileToBase64(newAttachments);
-        const newData = Object.assign({}, body, { attachments: oldAttachments.concat(formatedAttachments)
+        const newData = Object.assign({}, body, {
+            attachments: oldAttachments.concat(formatedAttachments)
         });
         if (formatedAttachments) {
             return newData;
@@ -29,12 +40,13 @@ const prepareUpdateBody = async (body) => {
 }
 
 export default {
+
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = `filter=${encodeURIComponent(JSON.stringify(params.filter))}&limit=${perPage}&page=${page}&orderBy=${field}&orderDir=${order}`;
         const url = `${apiUrl}/${resource}?${query}`;
-        return Axios.get(url).then((res) => ({
+        return Axios.get(url, getToken()).then((res) => ({
             data: res.data.length !== 0 ? res.data.data.map(record => ({ id: record._id, ...record })) : [],
             total: parseInt(res.data.count),
         }));
@@ -42,7 +54,7 @@ export default {
 
     getOne: (resource, params) => {
         if (params.id) {
-            return Axios.get(`${apiUrl}/${resource}/${params.id}`).then((res) => ({
+            return Axios.get(`${apiUrl}/${resource}/${params.id}`, getToken()).then((res) => ({
                 data: { id: res.data._id, ...res.data }
             }));
         }
@@ -53,9 +65,12 @@ export default {
             filter: JSON.stringify({ id: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({
-            data: json ? json.data.map(resource => ({ ...resource, id: resource._id }) ) : [],
+        return Axios.get(url, { headers: getToken().headers }).then(({ json }) => ({
+            data: json ? json.data.map(resource => ({ ...resource, id: resource._id })) : [],
         }));
+        // return httpClient(url,{headers: getToken().headers}).then(({ json }) => ({
+        //     data: json ? json.data.map(resource => ({ ...resource, id: resource._id })) : [],
+        // }));
     },
 
     getManyReference: (resource) => {
@@ -70,8 +85,7 @@ export default {
         //     }),
         // };
         const url = `${apiUrl}/${resource}`;
-
-        return httpClient(url).then(({ headers, json }) => ({
+        return Axios.get(url, { headers: getToken().headers }).then(({ headers, json }) => ({
             data: json,
             total: parseInt(headers.get('content-range').split('/').pop(), 10),
         }));
@@ -91,23 +105,22 @@ export default {
             body.userId = userId;
         }
         const resultData = await prepareUpdateBody(body);
-        return new Promise((resolve, reject) => {
-            httpClient(`${apiUrl}/${resource}/${params.id}`, {
-                method: 'PUT',
-                body: JSON.stringify(resultData),
-            }).then(({ json }) => resolve({ data: { id: json._id, ...json } })).catch((err) => {return reject(
-                new HttpError(
-                    (err && err.message),
-                    err.statusCode,
-                    err
-                ))})
-        })
+        return Axios.put(`${apiUrl}/${resource}/${params.id}`, resultData, getToken()).then(({ data }) => ({
+            data: { id: data._id, ...data },
+        })).catch((err) => {
+            new HttpError(
+                (err && err.message),
+                err.statusCode,
+                err
+            )
+        });
     },
 
     updateMany: (resource, params) => {
         return httpClient(`${apiUrl}/${resource}`, {
             method: 'PUT',
             body: JSON.stringify(params),
+            headers: getToken().headers
         }).then(({ json }) => ({ data: json })).catch((err) => {
             console.log(err)
         });
@@ -118,13 +131,13 @@ export default {
         if (body.attachments && body.attachments.length !== 0) {
             const formatedAttachments = await convertFileToBase64(body.attachments)
             const newData = Object.assign({}, body, { attachments: formatedAttachments });
-            return Axios.post(`${apiUrl}/${resource}`, newData,).then(({ data }) => ({
+            return Axios.post(`${apiUrl}/${resource}`, newData, getToken()).then(({ data }) => ({
                 data: { ...newData, id: data.data._id },
             })).catch((err) => {
                 console.log(err);
             });
         } else {
-            return Axios.post(`${apiUrl}/${resource}`,body).then(({ data }) => ({
+            return Axios.post(`${apiUrl}/${resource}`, body, getToken()).then(({ data }) => ({
                 data: { ...body, id: data.data._id },
             })).catch((err) => {
                 console.log(err);
@@ -133,18 +146,29 @@ export default {
     },
 
     delete: (resource, params) => {
-        return Axios.delete(`${apiUrl}/${resource}/${params.id}`, {
-            method: 'DELETE',
-        }).then(() => ({ data: params.previousData }));
+        return Axios.delete(`${apiUrl}/${resource}/${params.id}`, getToken()).then(() => ({ data: params.previousData }));
     },
 
     deleteMany: (resource, params) => {
         const deletedIds = {
             ids: params.ids,
         };
-        return httpClient(`${apiUrl}/${resource}`, {
-            method: 'DELETE',
-            body: JSON.stringify(deletedIds),
-        }).then(({ json }) => ({ data: [json] }));
+        const token = getToken().headers
+        // return Axios.delete(`${apiUrl}/${resource}`, deletedIds, getToken()).then(({ json }) => ({ data: [json] })).catch((err) => {
+        //     console.log(err);
+        // });
+        return Axios.delete(`${apiUrl}/${resource}`, {
+            headers: token,
+            data: {
+                ids: deletedIds.ids
+            }
+        }).then(({ json }) => ({ data: [json] })).catch((err) => {
+            console.log(err);
+        });
+        // return httpClient(`${apiUrl}/${resource}`, {
+        //     method: 'DELETE',
+        //     headers: getToken().headers,
+        //     body: JSON.stringify(deletedIds)
+        // }, getToken()).then(({ json }) => ({ data: [json] }));
     }
 };

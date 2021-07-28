@@ -19,7 +19,12 @@ body > .MuiDrawer-modal {
 
 header.MuiPaper-root button[aria-label="Refresh"] {
     display: none;
-  }
+}
+
+header.MuiPaper-root .MuiCircularProgress-indeterminate {
+    display: none;
+}
+
 
 .nav-menu > .hamburger {
     display: none !important;

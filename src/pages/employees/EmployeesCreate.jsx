@@ -72,15 +72,20 @@ export const EmployeesCreate = props => {
                                     fullWidth
                                 />
                                 <Typography variant="h6" gutterBottom>
-                                    Status
+                                    Working Status
                                 </Typography>
                                 <Box display={{ xs: 'block', sm: 'flex' }}>
                                     <Box
                                         flex={2}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <NullableBooleanInput source="workingStatus"
+                                        <NullableBooleanInput
+                                            label="Status"
+                                            source="workingStatus"
                                             fullWidth
+                                            nullLabel="None"
+                                            trueLabel="Working"
+                                            falseLabel="Not working"
                                         />
                                     </Box>
                                 </Box>

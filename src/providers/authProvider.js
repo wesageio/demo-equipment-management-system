@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 const apiUrl = window.env ? window.env.REACT_APP_ADMIN_API : process.env.REACT_APP_ADMIN_API;
 
@@ -6,7 +7,7 @@ export default {
     // called when the user attempts to log in
     login: ({ username, password }) => {
         return new Promise((resolve, reject) => {
-            axios(`${apiUrl}/users/signin`, {
+            axios(`${apiUrl}/auth/signin`, {
                 method: 'POST',
                 data: {
                     username,
@@ -17,34 +18,41 @@ export default {
                 }
             })
                 .then(res => {
-                    localStorage.setItem('username', res.data.user._id);
+                    localStorage.setItem('token', res.data.accessToken);
                     resolve(res);
                 })
                 .catch(err => {
-                    reject(err.response.data.message);
+                    reject(err.response);
                 });
         });
-        // // accept all username/password combinations
-        // return Promise.resolve();
     },
     // called when the user clicks on the logout button
     logout: () => {
-        localStorage.removeItem('username');
+        localStorage.removeItem('token');
         return Promise.resolve();
     },
     // called when the API returns an error
     checkError: ({ status }) => {
         if (status === 401 || status === 403) {
-            localStorage.removeItem('username');
+            localStorage.removeItem('token');
             return Promise.reject();
         }
         return Promise.resolve();
     },
     // called when the user navigates to a new location, to check for authentication
     checkAuth: () => {
-        return localStorage.getItem('username')
-            ? Promise.resolve()
-            : Promise.reject();
+        const accessToken = localStorage.getItem('token');
+        if (accessToken) {
+            const { exp } = jwt_decode(accessToken);
+            if (exp < (new Date().getTime() / 1000)){
+                localStorage.removeItem('token');
+                return Promise.reject();
+            }
+            return Promise.resolve()
+        } else {
+            localStorage.removeItem('token');
+            return Promise.reject();
+        }
     },
     // called when the user navigates to a new location, to check for permissions / roles
     getPermissions: () => Promise.resolve(),

@@ -27,7 +27,7 @@ const renderActiveShape = (props) => {
     const textAnchor = cos >= 0 ? "start" : "end";
 
     return (
-        <g>
+        <g style={{cursor: 'pointer'}}>
             <text x={cx} y={cy} dy={8} fontSize="25" textAnchor="middle" fill="#7d7676">
                 {payload.name}
             </text>

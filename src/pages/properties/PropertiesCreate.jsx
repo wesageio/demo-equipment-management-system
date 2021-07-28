@@ -45,7 +45,7 @@ export const PropertiesCreate = props => {
                                     validate={[required()]}
                                     fullWidth
                                 />
-                                <TextInput source="description"
+                                <TextInput multiline source="description"
                                     className={classes.editField}
                                     formClassName={classes.editCell}
                                 />
