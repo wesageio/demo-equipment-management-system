@@ -5,13 +5,17 @@
 
 # Overview
 
-Admin UI dashboard built while following [tutorial](https://marmelab.com/react-admin/Tutorial.html)..
+This is the admin of an equipment management system. Feel free to explore and modify the data.
 
 ## Setup
 
 Need to have following ENV variables in .env file (e.g):
 The host of admin-api
-- REACT_APP_ADMIN_API=http://localhost
+
+- REACT_APP_ADMIN_API=http://localhost:3001
+- REACT_APP_ADMIN_API_WEB_SOCKET=http://localhost:4001
+- REACT_APP_LOCATION_KEY=
+
 ```sh
 npm install
 ```
