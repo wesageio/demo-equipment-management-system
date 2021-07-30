@@ -1,0 +1,13 @@
+node_modules/
+mocha
+mocha-api
+bin/
+coverage/
+doc/
+dist/
+config/.env
+config/.env.test
+.vscode
+.webpack
+.eslintcache
+.env

@@ -1,0 +1,41 @@
+{
+    "name": "demo-ems-ui",
+    "version": "0.0.5",
+    "private": true,
+    "dependencies": {
+        "@aws-amplify/ui-react": "^1.2.7",
+        "@date-io/date-fns": "^2.10.6",
+        "@material-ui/core": "4.11.2",
+        "aws-amplify": "^4.2.1",
+        "axios": "^0.21.0",
+        "itsa-react-docviewer": "^16.1.1",
+        "jwt-decode": "^3.1.2",
+        "lodash": "^4.17.20",
+        "moment": "^2.29.1",
+        "ra-data-json-server": "^3.9.0",
+        "ra-input-rich-text": "^3.17.0",
+        "ra-language-english": "^3.11.3",
+        "react": "^17.0.0",
+        "react-admin": "3.12.4",
+        "react-admin-import-csv": "^1.0.15",
+        "react-alice-carousel": "^2.5.1",
+        "react-doc-viewer": "^0.1.5",
+        "react-dom": "^17.0.0",
+        "react-file-viewer": "^1.2.1",
+        "react-scripts": "^4.0.0",
+        "recharts": "^2.0.10",
+        "socket.io-client": "2.2.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "eject": "react-scripts eject",
+        "build": "react-scripts build",
+        "lint": "eslint --ext .js,.js,.jsx \"./src/**/*.{js,jsx}\""
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
+}
