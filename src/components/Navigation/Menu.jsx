@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { MenuItemLink, getResources } from 'react-admin';
 import { useSelector } from 'react-redux';
 import DashboardIcon from '@material-ui/icons/Home';
+import { useMediaQuery } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 export const Menu = ({ onMenuClick }) => {
     const resources = useSelector(getResources);
     const [view, setView] = useState(false);
+    const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
     const handleClick = () => {
         setView(!view)
@@ -37,16 +40,29 @@ export const Menu = ({ onMenuClick }) => {
     return (
         <div className="nav-menu">
             <>
-                <MenuItemLink
-                    to={`/`}
-                    primaryText=''
-                    leftIcon={<DashboardIcon />}
-                    className="dashboardIcon"
-                    onClick={handleClick}
-                />
-                <DashboardIcon onClick={handleClick} className="hamburgerDashboardMenu" />
-                {view &&
+                {isSmall ?
+                    <MenuItemLink
+                        to={false}
+                        primaryText=''
+                        leftIcon={<MenuIcon />}
+                        className="dashboardIcon"
+                        onClick={handleClick}
+                    /> :
+                    <MenuItemLink
+                        to={`/`}
+                        primaryText=''
+                        leftIcon={<DashboardIcon />}
+                        className="dashboardIcon"
+                        onClick={handleClick}
+                    />
+                }
+                {view && isSmall &&
                     <div className="hamburger-menu">
+                        <MenuItemLink
+                            to={`/`}
+                            primaryText="Dashboard"
+                            onClick={handleClick}
+                        />
                         {resources.map((item, key) => {
                             return <MenuItemLink
                                 to={`/${item.name}`}
@@ -58,16 +74,18 @@ export const Menu = ({ onMenuClick }) => {
                         })}
                     </div>
                 }
-                {resources.map((item, key) => {
-                    return <MenuItemLink
-                        to={`/${item.name}`}
-                        key={key}
-                        className="resource-links"
-                        primaryText={item.options && item.options.label || item.name}
-                        onClick={() => { return onMenuClick, setView(false) }}
-                    />
+                {!isSmall &&
+                    resources.map((item, key) => {
+                        return <MenuItemLink
+                            to={`/${item.name}`}
+                            key={key}
+                            className="resource-links"
+                            primaryText={item.options && item.options.label || item.name}
+                            onClick={() => { return onMenuClick, setView(false) }}
+                        />
 
-                })}
+                    })
+                }
             </>
         </div>
     );

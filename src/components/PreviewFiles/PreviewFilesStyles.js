@@ -27,6 +27,7 @@ export const previewStyles = makeStyles({
     attachmentName: {
         maxWidth: '130px',
         minWidth: '50px',
+        width: '120px',
         color: '#3c8dbc',
         fontSize: '15px',
         textAlign: 'right',

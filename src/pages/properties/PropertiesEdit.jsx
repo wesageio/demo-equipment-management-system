@@ -47,7 +47,7 @@ export const PropertiesEdit = props => {
                                         { id: 'Telephone', name: 'Telephone' },
                                         { id: 'Laptop', name: 'Laptop' },
                                         { id: 'Monitor', name: 'Monitor' },
-                                        { id: 'Pc', name: 'PC' },
+                                        { id: 'PC', name: 'PC' },
                                         { id: 'Keyboard', name: 'Keyboard' },
                                         { id: 'Mouse', name: 'Mouse' },
                                     ]}

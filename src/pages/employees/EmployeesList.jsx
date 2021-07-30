@@ -20,6 +20,7 @@ import {
     NullableBooleanInput,
     ReferenceArrayField,
     SingleFieldList,
+    SelectInput,
 } from 'react-admin';
 import OfflineIcon from '@material-ui/icons/Cancel';
 import OnlineIcon from '@material-ui/icons/CheckCircle';
@@ -58,13 +59,21 @@ const ImapAccountFilter = (props) => {
                     <TextInput label="First name" source="firstName" alwaysOn />
                     <TextInput label="Surname" source="surname" alwaysOn />
                     <TextInput label="Email" source="email" alwaysOn />
+                    <SelectInput label="Gender" source="gender"
+                        choices={[
+                            { id: 'male', name: 'Male' },
+                            { id: 'female', name: 'Female' }
+                        ]}
+                        alwaysOn
+                        emptyText="All"
+                    />
                     <DateInput clearalwaysvisible="true" label="Date of birth" source="dateOfBirth" alwaysOn />
                     <ReferenceInput
                         label="Property"
                         source="property"
                         reference="properties"
                         allowEmpty={false}
-                        filterToQuery={searchText => ({ name: searchText })}
+                        filterToQuery={searchText => ({ q: searchText })}
                         alwaysOn
                     >
                         <AutocompleteInput
@@ -83,7 +92,7 @@ const ImapAccountFilter = (props) => {
                         source="organization"
                         reference="organizations"
                         allowEmpty={false}
-                        filterToQuery={searchText => ({ name: searchText })}
+                        filterToQuery={searchText => ({ q: searchText })}
                         alwaysOn
                     >
                         <AutocompleteInput

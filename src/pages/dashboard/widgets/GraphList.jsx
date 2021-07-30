@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { Line, LineChart, XAxis, CartesianGrid, Tooltip, YAxis } from 'recharts';
 
-export const GraphList = () => {
+export const GraphList = ({style}) => {
     const [users, setUsers] = useState([]);
     const [year, setYear] = useState('2021')
     const dataProvider = useDataProvider();
@@ -30,13 +30,7 @@ export const GraphList = () => {
     });
 
     return (
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100%',
-            flexDirection: 'column'
-        }}>
+        <div style={style}>
             <select
                 style={{
                     position: 'absolute',

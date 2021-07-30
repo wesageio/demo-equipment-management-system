@@ -64,13 +64,13 @@ const PropertiesFilter = (props) => (
                 <TextInput label="Name" source="name" alwaysOn />
                 <SelectInput label="Category" source="category"
                     choices={[
-                        { id: 'furniture', name: 'Furniture' },
-                        { id: 'telephone', name: 'Telephone' },
-                        { id: 'laptop', name: 'Laptop' },
-                        { id: 'monitor', name: 'Monitor' },
-                        { id: 'pc', name: 'PC' },
-                        { id: 'keyboard', name: 'Keyboard' },
-                        { id: 'mouse', name: 'Mouse' },
+                        { id: 'Furniture', name: 'Furniture' },
+                        { id: 'Telephone', name: 'Telephone' },
+                        { id: 'Laptop', name: 'Laptop' },
+                        { id: 'Monitor', name: 'Monitor' },
+                        { id: 'PC', name: 'PC' },
+                        { id: 'Keyboard', name: 'Keyboard' },
+                        { id: 'Mouse', name: 'Mouse' },
                     ]}
                     alwaysOn
                 />

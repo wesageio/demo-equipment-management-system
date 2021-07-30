@@ -101,8 +101,6 @@ export default {
                 })
                 localStorage.setItem('settings', JSON.stringify(settingsData));
             }
-            const userId = localStorage.getItem('username');
-            body.userId = userId;
         }
         const resultData = await prepareUpdateBody(body);
         return Axios.put(`${apiUrl}/${resource}/${params.id}`, resultData, getToken()).then(({ data }) => ({
@@ -120,7 +118,7 @@ export default {
         return httpClient(`${apiUrl}/${resource}`, {
             method: 'PUT',
             body: JSON.stringify(params),
-            headers: getToken().headers
+            headers: getToken().headers,
         }).then(({ json }) => ({ data: json })).catch((err) => {
             console.log(err)
         });
@@ -129,6 +127,9 @@ export default {
     create: async (resource, params) => {
         let body = params.data;
         if (body.attachments && body.attachments.length !== 0) {
+            body.attachments = body.attachments.filter(function( element ) {
+                return element !== undefined;
+            });
             const formatedAttachments = await convertFileToBase64(body.attachments)
             const newData = Object.assign({}, body, { attachments: formatedAttachments });
             return Axios.post(`${apiUrl}/${resource}`, newData, getToken()).then(({ data }) => ({

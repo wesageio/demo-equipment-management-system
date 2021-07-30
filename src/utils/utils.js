@@ -13,7 +13,7 @@ export const getUpdatedData = (oldData, newData) => {
 }
 
 export const convertFileToBase64 = file => {
-    return Promise.all(file.map(item => {
+    return Promise.all(file.filter((el) => el.path !== null).map(item => {
         if (item.path.hasOwnProperty('rawFile')) {
             const reader = new FileReader();
             reader.readAsDataURL(item.path.rawFile);

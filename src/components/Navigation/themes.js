@@ -18,9 +18,11 @@ export const darkTheme = {
     overrides: {
         MuiAppBar: {
             colorSecondary: {
-                color: '#ffffffb3',
+                width: '100%',
+                border: 'none !important',
+                boxShadow: '0px 5px 10px #808080a6 !important',
                 background: 'linear-gradient(to right, #9c9c9c 0%, #9eafa5 100%)',
-            },
+            }
         },
         MuiButtonBase: {
             root: {
@@ -37,6 +39,13 @@ export const darkTheme = {
                     borderRadius: 'inherit',
                 },
             },
+        },
+        imageBlock: {
+            width: '40px',
+            height: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
         },
     },
     props: {
@@ -70,6 +79,7 @@ export const lightTheme = {
     overrides: {
         MuiAppBar: {
             colorSecondary: {
+                width: '100%',
                 border: 'none !important',
                 boxShadow: '0px 5px 10px #808080a6 !important',
                 background: 'linear-gradient(to right, #657573 0%, #61a99e 35%), linear-gradient(to bottom, #489c52 0%, #6f4ceb 50%)'

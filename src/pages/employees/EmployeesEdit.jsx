@@ -108,7 +108,7 @@ export const EmployeesEdit = props => {
                                 </ReferenceArrayInput>
                                 <ReferenceInput
                                     fullWidth label="Organization" source="organization" reference="organizations">
-                                    <AutocompleteInput resettable={true} allowEmpty={false} optionText="name" />
+                                    <AutocompleteInput suggestionLimit={5} resettable={true} allowEmpty={false} optionText="name" />
                                 </ReferenceInput>
                             </Box>
                         </Box>

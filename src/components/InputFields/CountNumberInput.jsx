@@ -7,7 +7,12 @@ export const CountNumberInput = ({label, source, requiredField}) => {
     return (
         <TextInput 
             fullWidth
-            parse={value => isNaN(Number(value)) ? null : Number(value)}
+            parse={value => {
+                if (value === '') {
+                    return 1
+                }
+                return isNaN(Number(value)) ? 5 : Number(value)}
+            }
             label={label}
             validate={requiredField && [required()]}
             source={source}

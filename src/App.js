@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
@@ -14,7 +14,6 @@ import NavBarLayout from './components/Navigation/NavBarLayout';
 import authProvider from './providers/authProvider';
 import dataProvider from './providers/dataProvider';
 
-import { initiateSocket } from './utils/connectGateway';
 import themeReducer from './store/themeReducer';
 
 const i18nProvider = polyglotI18nProvider(() =>
@@ -24,10 +23,6 @@ const i18nProvider = polyglotI18nProvider(() =>
 );
 
 const App = () => {
-    useEffect(() => {
-        initiateSocket();
-    }, []);
-
     return (
         <Admin
             customReducers={{ theme: themeReducer }}

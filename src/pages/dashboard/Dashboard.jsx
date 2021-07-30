@@ -27,9 +27,6 @@ const styles = {
     }
 };
 
-const Spacer = () => <span style={{ width: '1em' }} />;
-const VerticalSpacer = () => <span style={{ height: '1em' }} />;
-
 const getTotalCount = async (dataProvider, setCount, setPieChart) => {
     const { data } = await dataProvider.getList('properties', {
         pagination: {},
@@ -83,30 +80,24 @@ const Dashboard = () => {
         getSettingsData(dataProvider)
     }, [dataProvider]);
 
-    return isXSmall ? (
-        <div>
-            <div style={styles.flexColumn}>
+    return isXSmall || isSmall ? (
+        <div style={{display: 'flex', width: '100%'}}>
+            <div style={{ width: '100%'}}>
                 <Welcome />
-                <VerticalSpacer />
-                <GraphList count={count} />
-                <VerticalSpacer />
-            </div>
-        </div>
-    ) : isSmall ? (
-        <div style={styles.flexColumn}>
-            <div style={styles.singleCol}>
-                <Welcome />
-            </div>
-            <div style={styles.flex}>
                 <CardWithIcon
                     to="/properties"
                     icon={DollarIcon}
                     title='Properties total cost'
                     subtitle={count}
                 />
-                <Spacer />
                 <PieChartList data={pieChart} />
-                <GraphList count={count} />
+                <GraphList style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+                />
             </div>
         </div>
     ) : (
@@ -122,9 +113,9 @@ const Dashboard = () => {
                     />
                     <PieChartList data={pieChart} />
                 </div>
-                <Card style={styles.card}>
+                <Card style={{ width: '50%', marginRight: '10px' }}>
                     <Link to={'to'}>
-                        <div className={styles.main}>
+                        <div>
                             <p style={{
                                 textAlign: 'left',
                                 margin: '5px 10px',
@@ -132,7 +123,14 @@ const Dashboard = () => {
                                 color: 'green',
                                 textDecoration: 'none'
                             }}>Purchase history</p>
-                            <GraphList count={count} />
+                            <GraphList style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '100%',
+                                flexDirection: 'column'
+                            }}
+                            />
                         </div>
                     </Link>
                 </Card>

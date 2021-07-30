@@ -50,6 +50,16 @@ const useListStyles = makeStyles(theme => ({
     }
 }));
 
+const FilesListField = ({ record }) => {
+    return (
+        record.attachments && record.attachments.length !== 0 ?
+            <FilesListView
+                record={record}
+                showName={false}
+            /> : null
+    )
+};
+
 export const PropertiesMobileList = ({ ids, data, basePath }) => {
     const classes = useListStyles();
 
@@ -123,12 +133,7 @@ export const PropertiesMobileList = ({ ids, data, basePath }) => {
                                 />
                             </div>
                             <div className={classes.cardBody}>
-                                {data[id].attachments && data[id].attachments.length !== 0 ?
-                                    <div className="file-list">
-                                        <span>Attachments:</span>
-                                        <FilesListView attachments={data[id].attachments} />
-                                    </div> : null
-                                }
+                                <FilesListField label="Attachments" record={data[id]} />
                             </div>
                         </CardContent>
                     </Card>

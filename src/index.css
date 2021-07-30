@@ -4,6 +4,10 @@ body {
     font-family: sans-serif;
 }
 
+#main-content {
+    padding: 5px 10px;
+}
+
 .disabled {
     opacity: 0.5;
     cursor: not-allowed !important;
@@ -25,36 +29,13 @@ header.MuiPaper-root .MuiCircularProgress-indeterminate {
     display: none;
 }
 
-
-.nav-menu > .hamburger {
-    display: none !important;
-}
-
-.nav-menu > .hamburger-menu {
-    display: none !important;
-}
-
-@media only screen and (min-width:1101px) {
-    .hamburgerDashboardMenu {
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    .nav-menu > .resource-links, .dashboardIcon {
-        display: none !important;
-    }
-    .nav-menu > .hamburger {
-        display: block !important;
-    }
-    .nav-menu > .hamburger-menu {
-        display: block !important;
-        position: absolute;
-        background-color: #647d7a;
-        left: 0;
-        top: 48px;
-        box-shadow: 5px 5px 10px #525252;
-    }
+.hamburger-menu {
+    display: block !important;
+    position: absolute;
+    background-color: #647d7a;
+    left: 0;
+    top: 48px;
+    box-shadow: 5px 5px 10px #525252;
 }
 
 .MuiDialog-paper {
