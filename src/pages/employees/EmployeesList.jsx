@@ -50,12 +50,19 @@ const ListActions = (props) => {
     );
 };
 
+const SearchAll = (props) => {
+    return (
+        <Filter {...props}>
+            <FilterLiveSearch label="Search All" source="q" alwaysOn />
+        </Filter>
+    );
+}
+
 const ImapAccountFilter = (props) => {
     return (
         <Card className={props.card}>
             <CardContent>
                 <Filter {...props}>
-                    <FilterLiveSearch label="Search All" source="q" alwaysOn />
                     <TextInput label="First name" source="firstName" alwaysOn />
                     <TextInput label="Surname" source="surname" alwaysOn />
                     <TextInput label="Email" source="email" alwaysOn />
@@ -68,6 +75,22 @@ const ImapAccountFilter = (props) => {
                         emptyText="All"
                     />
                     <DateInput clearalwaysvisible="true" label="Date of birth" source="dateOfBirth" alwaysOn />
+                    <NullableBooleanInput
+                        falseLabel="No"
+                        trueLabel="Yes"
+                        options={{
+                            SelectProps: { displayEmpty: true },
+                            InputLabelProps: { shrink: true }
+                        }}
+                        nullLabel="All"
+                        label="Working status"
+                        source="workingStatus"
+                        alwaysOn
+                    />
+
+                </Filter>
+                <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
+                <Filter {...props}>
                     <ReferenceInput
                         label="Property"
                         source="property"
@@ -106,18 +129,6 @@ const ImapAccountFilter = (props) => {
                             clearAlwaysVisible={true}
                         />
                     </ReferenceInput>
-                    <NullableBooleanInput
-                        falseLabel="No"
-                        trueLabel="Yes"
-                        options={{
-                            SelectProps: { displayEmpty: true },
-                            InputLabelProps: { shrink: true }
-                        }}
-                        nullLabel="All"
-                        label="Working status"
-                        source="workingStatus"
-                        alwaysOn
-                    />
                 </Filter>
             </CardContent>
         </Card>
@@ -193,6 +204,7 @@ export const EmployeesList = (props) => {
         <List
             aside={!isSmall && <ImapAccountFilter className={card} />}
             className={listBlock}
+            filters={<SearchAll style={{ margin: 0, alignItems: 'center' }} />}
             empty={<Empty />}
             actions={<ListActions />}
             perPage={count}

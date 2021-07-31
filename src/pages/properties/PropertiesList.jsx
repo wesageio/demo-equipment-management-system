@@ -56,11 +56,18 @@ const ListActions = (props) => {
     );
 };
 
+const SearchAll = (props) => {
+    return (
+        <Filter {...props}>
+            <FilterLiveSearch label="Search All" source="q" alwaysOn />
+        </Filter>
+    );
+}
+
 const PropertiesFilter = (props) => (
     <Card className={props.card}>
         <CardContent>
             <Filter {...props}>
-                <FilterLiveSearch label="Search All" source="q" alwaysOn />
                 <TextInput label="Name" source="name" alwaysOn />
                 <SelectInput label="Category" source="category"
                     choices={[
@@ -139,6 +146,7 @@ export const PropertiesList = (props) => {
             aside={!isSmall && <PropertiesFilter className={card} />}
             className={listBlock}
             empty={<Empty />}
+            filters={<SearchAll style={{margin: 0, alignItems: 'center'}} />}
             filter={status && { status }}
             actions={<ListActions />}
             perPage={count}

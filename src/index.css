@@ -13,6 +13,16 @@ body {
     cursor: not-allowed !important;
 }
 
+.RaListToolbar-toolbar {
+    display: flex;
+    align-items: center !important;
+    margin: 20px 5px;
+}
+
+.filter-field .MuiFilledInput-marginDense {
+    flex-direction: row !important;
+}
+
 body > .MuiDrawer-modal {
     display: none;
 }

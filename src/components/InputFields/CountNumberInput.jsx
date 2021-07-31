@@ -8,8 +8,8 @@ export const CountNumberInput = ({label, source, requiredField}) => {
         <TextInput 
             fullWidth
             parse={value => {
-                if (value === '') {
-                    return 1
+                if (value === '' || value.charAt(0) === '0') {
+                    return ''
                 }
                 return isNaN(Number(value)) ? 5 : Number(value)}
             }
