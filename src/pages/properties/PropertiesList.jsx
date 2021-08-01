@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { cloneElement } from 'react';
 import { useHistory} from "react-router-dom";
 import {
     List,
     Datagrid,
     Filter,
     EditButton,
-    TopToolbar,
-    CreateButton,
-    useListContext,
-    sanitizeListRestProps,
     NumberField,
     NumberInput,
     TextField,
-    FilterLiveSearch,
     TextInput,
     DateField,
     DateInput,
@@ -22,47 +16,12 @@ import {
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
 
 import { styles } from './PropertiesStyles';
-import ImportButtonCsv from '../../components/ImportCsv';
 import { FilesListView } from '../../components/PreviewFiles/FilesListView';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { PropertiesMobileList } from './PropertiesMobileList';
 import { Empty } from '../../components/Toolbar/EmptyList';
-
-const ListActions = (props) => {
-    const {
-        className,
-        filters,
-        ...rest
-    } = props;
-    const {
-        resource,
-        displayedFilters,
-        filterValues,
-        basePath,
-        showFilter,
-    } = useListContext();
-    return (
-        <TopToolbar className={className} {...sanitizeListRestProps(rest)}>
-            {filters && cloneElement(filters, {
-                resource,
-                showFilter,
-                displayedFilters,
-                filterValues,
-                context: 'button',
-            })}
-            <CreateButton basePath={basePath} />
-            <ImportButtonCsv {...props} />
-        </TopToolbar>
-    );
-};
-
-const SearchAll = (props) => {
-    return (
-        <Filter {...props}>
-            <FilterLiveSearch label="Search All" source="q" alwaysOn />
-        </Filter>
-    );
-}
+import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
+import { ListActions, SearchAll } from '../../components/Toolbar/TopBar';
 
 const PropertiesFilter = (props) => (
     <Card className={props.card}>
@@ -84,7 +43,8 @@ const PropertiesFilter = (props) => (
                 <TextInput label="Description" source="description" alwaysOn />
                 <DateInput label="Purchase date" source="purchaseDate" alwaysOn />
                 <NumberInput label="Warranty" source="warranty" alwaysOn />
-                <NumberInput label="Purchase cost ($)" source="purchaseCost" alwaysOn />
+                <CountNumberInput label="Warranty (month)" source="warranty" alwaysOn />
+                <CountNumberInput label="Purchase cost ($)" source="purchaseCost" alwaysOn />
                 <SelectInput source="status"
                     choices={[
                         { id: 'Active', name: 'Active' },

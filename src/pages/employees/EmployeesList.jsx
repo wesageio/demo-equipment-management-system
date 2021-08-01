@@ -7,16 +7,11 @@ import {
     EditButton,
     Filter,
     TextInput,
-    CreateButton,
     DateInput,
     ReferenceField,
-    TopToolbar,
-    useListContext,
-    sanitizeListRestProps,
     FunctionField,
     ReferenceInput,
     AutocompleteInput,
-    FilterLiveSearch,
     NullableBooleanInput,
     ReferenceArrayField,
     SingleFieldList,
@@ -26,37 +21,12 @@ import OfflineIcon from '@material-ui/icons/Cancel';
 import OnlineIcon from '@material-ui/icons/CheckCircle';
 
 import { styles } from './EmployeesStyles';
-import ImportButtonCsv from '../../components/ImportCsv';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
 import { FilesListView } from '../../components/PreviewFiles/FilesListView';
 import { EmployeesMobileList } from './EmployeesMobileList';
 import { Empty } from '../../components/Toolbar/EmptyList';
-
-const ListActions = (props) => {
-    const {
-        className,
-        ...rest
-    } = props;
-    const {
-        basePath,
-    } = useListContext();
-
-    return (
-        <TopToolbar className={className} {...sanitizeListRestProps(rest)}>
-            <CreateButton basePath={basePath} />
-            <ImportButtonCsv {...props} />
-        </TopToolbar>
-    );
-};
-
-const SearchAll = (props) => {
-    return (
-        <Filter {...props}>
-            <FilterLiveSearch label="Search All" source="q" alwaysOn />
-        </Filter>
-    );
-}
+import { ListActions, SearchAll } from '../../components/Toolbar/TopBar';
 
 const ImapAccountFilter = (props) => {
     return (
@@ -178,9 +148,9 @@ const DataList = (props) => {
                 label="Working Status"
                 render={record =>
                     record.workingStatus ?
-                        <OnlineIcon className={active} />
+                        <OnlineIcon titleAccess="Working" className={active} />
                         :
-                        <OfflineIcon className={notActive} />
+                        <OfflineIcon titleAccess="Not Working" className={notActive} />
                 }
             />
             <EditButton label=''

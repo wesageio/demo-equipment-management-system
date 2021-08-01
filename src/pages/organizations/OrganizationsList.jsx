@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { cloneElement } from 'react';
 import {
     List,
     Datagrid,
@@ -7,57 +6,17 @@ import {
     Filter,
     TextInput,
     EditButton,
-    TopToolbar,
-    CreateButton,
-    useListContext,
-    sanitizeListRestProps,
     NumberField,
-    NumberInput,
-    FilterLiveSearch,
 } from 'react-admin';
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
 
 import { styles } from './OrganizationsStyles';
-import ImportButtonCsv from '../../components/ImportCsv';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { OrganizationsMobileList } from './OrganizationsMobileList';
 import { Empty } from '../../components/Toolbar/EmptyList';
+import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
+import { ListActions, SearchAll } from '../../components/Toolbar/TopBar';
 
-const ListActions = (props) => {
-    const {
-        className,
-        filters,
-        ...rest
-    } = props;
-    const {
-        resource,
-        displayedFilters,
-        filterValues,
-        basePath,
-        showFilter,
-    } = useListContext();
-    return (
-        <TopToolbar className={className} {...sanitizeListRestProps(rest)}>
-            {filters && cloneElement(filters, {
-                resource,
-                showFilter,
-                displayedFilters,
-                filterValues,
-                context: 'button',
-            })}
-            <CreateButton basePath={basePath} />
-            <ImportButtonCsv {...props} />
-        </TopToolbar>
-    );
-};
-
-const SearchAll = (props) => {
-    return (
-        <Filter {...props}>
-            <FilterLiveSearch label="Search All" source="q" alwaysOn />
-        </Filter>
-    );
-}
 
 const OrganizationsFilter = (props) => (
     <Card className={props.card}>
@@ -68,7 +27,7 @@ const OrganizationsFilter = (props) => (
                 <TextInput label="Email" source="email" alwaysOn />
                 <TextInput label="Location" source="location" alwaysOn />
                 <TextInput label="Website" source="website" alwaysOn />
-                <NumberInput label="Workers" source="workers" alwaysOn />
+                <CountNumberInput label="Workers" source="workers" alwaysOn />
             </Filter>
         </CardContent>
     </Card>
