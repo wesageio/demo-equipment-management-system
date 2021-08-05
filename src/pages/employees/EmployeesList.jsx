@@ -32,7 +32,7 @@ const ImapAccountFilter = (props) => {
     return (
         <Card className={props.card}>
             <CardContent>
-                <Filter {...props}>
+                <Filter style={{padding: '15px 5px'}} {...props}>
                     <TextInput label="First name" source="firstName" alwaysOn />
                     <TextInput label="Surname" source="surname" alwaysOn />
                     <TextInput label="Email" source="email" alwaysOn />
@@ -59,8 +59,8 @@ const ImapAccountFilter = (props) => {
                     />
 
                 </Filter>
-                <p style={{ textAlign: 'center', margin: '0', paddingTop: '10px' }}>Reference fields</p>
-                <Filter style={{marginTop: '0'}} {...props}>
+                <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
+                <Filter style={{marginTop: '0', padding: '5px 5px'}} {...props}>
                     <ReferenceInput
                         label="Property"
                         source="property"

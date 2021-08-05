@@ -51,7 +51,7 @@ export const styles = makeStyles({
         }
     },
     card: {
-        // padding: '15px 5px',
+        padding: '15px 5px',
         "& .filter-field": {
             height: '55px',
             width: '100%',
