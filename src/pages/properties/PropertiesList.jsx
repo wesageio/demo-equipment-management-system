@@ -42,7 +42,6 @@ const PropertiesFilter = (props) => (
                 />
                 <TextInput label="Description" source="description" alwaysOn />
                 <DateInput label="Purchase date" source="purchaseDate" alwaysOn />
-                <NumberInput label="Warranty" source="warranty" alwaysOn />
                 <CountNumberInput label="Warranty (month)" source="warranty" alwaysOn />
                 <CountNumberInput label="Purchase cost ($)" source="purchaseCost" alwaysOn />
                 <SelectInput source="status"
