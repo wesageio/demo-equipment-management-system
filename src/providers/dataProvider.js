@@ -1,5 +1,4 @@
 import { fetchUtils, HttpError } from 'react-admin';
-import { stringify } from 'query-string';
 import Axios from 'axios';
 import { convertFileToBase64, getUpdatedData } from '../utils/utils';
 
@@ -40,7 +39,6 @@ const prepareUpdateBody = async (body) => {
 }
 
 export default {
-
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
@@ -61,16 +59,11 @@ export default {
     },
 
     getMany: (resource, params) => {
-        const query = {
-            filter: JSON.stringify({ id: params.ids }),
-        };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const query = `filter=${encodeURIComponent(JSON.stringify(params))}&limit=25&page=1&orderBy=id&orderDir=DESC`;
+        const url = `${apiUrl}/${resource}?${query}`;
         return Axios.get(url, { headers: getToken().headers }).then(({ json }) => ({
             data: json ? json.data.map(resource => ({ ...resource, id: resource._id })) : [],
         }));
-        // return httpClient(url,{headers: getToken().headers}).then(({ json }) => ({
-        //     data: json ? json.data.map(resource => ({ ...resource, id: resource._id })) : [],
-        // }));
     },
 
     getManyReference: (resource) => {

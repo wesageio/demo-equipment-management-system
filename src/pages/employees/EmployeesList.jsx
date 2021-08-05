@@ -116,7 +116,6 @@ const AttachmentsField = ({ record }) => {
 
 const DataList = (props) => {
     const { rootTable, svg, active, notActive } = styles();
-
     return (
         <Datagrid className={rootTable} hasBulkActions={true}>
             <TextField source="firstName" />
