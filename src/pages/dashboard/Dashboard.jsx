@@ -75,6 +75,7 @@ const Dashboard = () => {
     const isSmall = useMediaQuery((theme) =>
         theme.breakpoints.down('md')
     );
+
     useEffect(() => {
         getTotalCount(dataProvider, setCount, setPieChart);
         getSettingsData(dataProvider)
@@ -91,13 +92,6 @@ const Dashboard = () => {
                     subtitle={count}
                 />
                 <PieChartList data={pieChart} />
-                <GraphList style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-                />
             </div>
         </div>
     ) : (

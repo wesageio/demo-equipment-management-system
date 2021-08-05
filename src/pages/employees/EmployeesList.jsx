@@ -7,16 +7,11 @@ import {
     EditButton,
     Filter,
     TextInput,
-    CreateButton,
     DateInput,
     ReferenceField,
-    TopToolbar,
-    useListContext,
-    sanitizeListRestProps,
     FunctionField,
     ReferenceInput,
     AutocompleteInput,
-    FilterLiveSearch,
     NullableBooleanInput,
     ReferenceArrayField,
     SingleFieldList,
@@ -26,36 +21,18 @@ import OfflineIcon from '@material-ui/icons/Cancel';
 import OnlineIcon from '@material-ui/icons/CheckCircle';
 
 import { styles } from './EmployeesStyles';
-import ImportButtonCsv from '../../components/ImportCsv';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
 import { FilesListView } from '../../components/PreviewFiles/FilesListView';
 import { EmployeesMobileList } from './EmployeesMobileList';
 import { Empty } from '../../components/Toolbar/EmptyList';
-
-const ListActions = (props) => {
-    const {
-        className,
-        ...rest
-    } = props;
-    const {
-        basePath,
-    } = useListContext();
-
-    return (
-        <TopToolbar className={className} {...sanitizeListRestProps(rest)}>
-            <CreateButton basePath={basePath} />
-            <ImportButtonCsv {...props} />
-        </TopToolbar>
-    );
-};
+import { ListActions, SearchAll } from '../../components/Toolbar/TopBar';
 
 const ImapAccountFilter = (props) => {
     return (
         <Card className={props.card}>
             <CardContent>
                 <Filter {...props}>
-                    <FilterLiveSearch label="Search All" source="q" alwaysOn />
                     <TextInput label="First name" source="firstName" alwaysOn />
                     <TextInput label="Surname" source="surname" alwaysOn />
                     <TextInput label="Email" source="email" alwaysOn />
@@ -68,6 +45,22 @@ const ImapAccountFilter = (props) => {
                         emptyText="All"
                     />
                     <DateInput clearalwaysvisible="true" label="Date of birth" source="dateOfBirth" alwaysOn />
+                    <NullableBooleanInput
+                        falseLabel="No"
+                        trueLabel="Yes"
+                        options={{
+                            SelectProps: { displayEmpty: true },
+                            InputLabelProps: { shrink: true }
+                        }}
+                        nullLabel="All"
+                        label="Working status"
+                        source="workingStatus"
+                        alwaysOn
+                    />
+
+                </Filter>
+                <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
+                <Filter {...props}>
                     <ReferenceInput
                         label="Property"
                         source="property"
@@ -106,18 +99,6 @@ const ImapAccountFilter = (props) => {
                             clearAlwaysVisible={true}
                         />
                     </ReferenceInput>
-                    <NullableBooleanInput
-                        falseLabel="No"
-                        trueLabel="Yes"
-                        options={{
-                            SelectProps: { displayEmpty: true },
-                            InputLabelProps: { shrink: true }
-                        }}
-                        nullLabel="All"
-                        label="Working status"
-                        source="workingStatus"
-                        alwaysOn
-                    />
                 </Filter>
             </CardContent>
         </Card>
@@ -135,7 +116,6 @@ const AttachmentsField = ({ record }) => {
 
 const DataList = (props) => {
     const { rootTable, svg, active, notActive } = styles();
-
     return (
         <Datagrid className={rootTable} hasBulkActions={true}>
             <TextField source="firstName" />
@@ -167,9 +147,9 @@ const DataList = (props) => {
                 label="Working Status"
                 render={record =>
                     record.workingStatus ?
-                        <OnlineIcon className={active} />
+                        <OnlineIcon titleAccess="Working" className={active} />
                         :
-                        <OfflineIcon className={notActive} />
+                        <OfflineIcon titleAccess="Not Working" className={notActive} />
                 }
             />
             <EditButton label=''
@@ -193,6 +173,7 @@ export const EmployeesList = (props) => {
         <List
             aside={!isSmall && <ImapAccountFilter className={card} />}
             className={listBlock}
+            filters={<SearchAll style={{ margin: 0, alignItems: 'center' }} />}
             empty={<Empty />}
             actions={<ListActions />}
             perPage={count}

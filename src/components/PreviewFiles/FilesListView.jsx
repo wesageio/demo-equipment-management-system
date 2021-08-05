@@ -68,7 +68,8 @@ export const FilesListView = ({ record, showName }) => {
                     {record.name}
                 </span> : null
             }
-            <Images />
+            {record.attachments && record.attachments.length !== 0 ?
+                <Images /> : null }
         </div>
     )
 }

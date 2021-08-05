@@ -10,7 +10,7 @@ import {
     SelectInput,
     required
 } from 'react-admin';
-import { Box, Typography, Card, CardContent } from '@material-ui/core';
+import { Box, Typography, Card, CardContent, useMediaQuery } from '@material-ui/core';
 
 import { styles } from './PropertiesStyles';
 import { FilesCreateEdit } from '../../components/PreviewFiles/FilesCreateEdit';
@@ -18,6 +18,7 @@ import { CountNumberInput } from '../../components/InputFields/CountNumberInput'
 
 export const PropertiesCreate = props => {
     const classes = styles();
+    const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
     return (
         <Create {...props}>
             <SimpleForm redirect="list" className={classes.createForm}>
@@ -29,8 +30,9 @@ export const PropertiesCreate = props => {
                                     Information
                                 </Typography>
                                 <TextInput required source="name"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
+                                    fullWidth
                                 />
                                 <SelectInput source="category"
                                     choices={[
@@ -46,8 +48,9 @@ export const PropertiesCreate = props => {
                                     fullWidth
                                 />
                                 <TextInput multiline source="description"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
+                                    fullWidth
                                 />
                             </Box>
                             <Box flex={2} mr={{ md: 0, lg: '1em' }} className={classes.box}>
@@ -55,15 +58,15 @@ export const PropertiesCreate = props => {
                                     Warranty
                                 </Typography>
                                 <DateInput source="purchaseDate"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
-                                <CountNumberInput label="Purchase cost (USD) (month)" source="purchaseCost"
-                                    className={classes.editField}
+                                <CountNumberInput label="Purchase cost ($)" source="purchaseCost"
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
                                 <CountNumberInput label="Warranty (month)" source="warranty"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
                             </Box>

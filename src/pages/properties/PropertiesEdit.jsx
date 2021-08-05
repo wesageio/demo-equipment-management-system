@@ -10,7 +10,7 @@ import {
     required,
     SelectInput,
 } from 'react-admin';
-import { Box, Typography, CardContent, Card } from '@material-ui/core';
+import { Box, Typography, CardContent, Card, useMediaQuery } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
 
 import { styles } from './PropertiesStyles';
@@ -22,6 +22,7 @@ import { EditToolbar } from '../../components/Toolbar/EditToolbar';
 
 export const PropertiesEdit = props => {
     const classes = styles();
+    const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
     return (
         <Edit {...props} undoable={false}>
@@ -38,8 +39,9 @@ export const PropertiesEdit = props => {
                                     Information
                                 </Typography>
                                 <TextInput required source="name"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
+                                    fullWidth
                                 />
                                 <SelectInput source="category"
                                     choices={[
@@ -57,8 +59,9 @@ export const PropertiesEdit = props => {
                                     fullWidth
                                 />
                                 <TextInput multiline source="description"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
+                                    fullWidth
                                 />
                             </Box>
                             <Box flex={2} mr={{ md: 0, lg: '1em' }} className={classes.box}>
@@ -66,15 +69,15 @@ export const PropertiesEdit = props => {
                                     Warranty
                                 </Typography>
                                 <DateInput source="purchaseDate"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
-                                <CountNumberInput label="Purchase cost (USD) (month)" source="purchaseCost"
-                                    className={classes.editField}
+                                <CountNumberInput label="Purchase cost ($)" source="purchaseCost"
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />  
                                 <CountNumberInput label="Warranty (month)" source="warranty"
-                                    className={classes.editField}
+                                    className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
                             </Box>

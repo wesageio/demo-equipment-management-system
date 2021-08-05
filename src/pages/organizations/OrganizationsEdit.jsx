@@ -3,7 +3,6 @@ import {
     Edit,
     SimpleForm,
     TextInput,
-    NumberInput,
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
@@ -13,6 +12,8 @@ import BackButton from '../../components/BackButton';
 import LocationInput from '../../components/InputFields/LocationInput';
 import { WebSiteInput } from '../../components/InputFields/WebSiteInput';
 import { EditToolbar } from '../../components/Toolbar/EditToolbar';
+import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
+import { PhoneNumberInput } from '../../components/InputFields/PhoneNumberInput';
 
 
 export const OrganizationsEdit = props => {
@@ -44,7 +45,7 @@ export const OrganizationsEdit = props => {
                                         ml={{ xs: 0, sm: '0.5em' }}
                                         style={{ marginRight: '0.5em', marginLeft: '0' }}
                                     >
-                                        <NumberInput required source="telephone" fullWidth />
+                                        <PhoneNumberInput requiredField label="Telephone" source="telephone" />
                                     </Box>
                                     <Box
                                         flex={1}
@@ -76,7 +77,7 @@ export const OrganizationsEdit = props => {
                                             flex={1}
                                             mr={{ xs: 0, sm: '0.5em' }}
                                         >
-                                            <NumberInput source="workers" fullWidth />
+                                            <CountNumberInput label="Workers" source="workers" />
                                         </Box>
                                     </Box>
                                 </Box>

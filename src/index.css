@@ -1,19 +1,30 @@
 body {
-    margin: 0;
-    padding: 0;
+    margin     : 0;
+    padding    : 0;
     font-family: sans-serif;
 }
 
 #main-content {
     padding: 5px 10px;
+    overflow-x: hidden;
 }
 
 .disabled {
     opacity: 0.5;
-    cursor: not-allowed !important;
+    cursor : not-allowed !important;
 }
 
-body > .MuiDrawer-modal {
+.RaListToolbar-toolbar {
+    display    : flex;
+    align-items: center !important;
+    margin     : 20px 5px;
+}
+
+.filter-field .MuiFilledInput-marginDense {
+    flex-direction: row !important;
+}
+
+body>.MuiDrawer-modal {
     display: none;
 }
 
@@ -30,42 +41,42 @@ header.MuiPaper-root .MuiCircularProgress-indeterminate {
 }
 
 .hamburger-menu {
-    display: block !important;
-    position: absolute;
+    display         : block !important;
+    position        : absolute;
     background-color: #647d7a;
-    left: 0;
-    top: 48px;
-    box-shadow: 5px 5px 10px #525252;
+    left            : 0;
+    top             : 48px;
+    box-shadow      : 5px 5px 10px #525252;
 }
 
 .MuiDialog-paper {
-    max-width: 800px !important;
+    max-width : 800px !important;
     overflow-y: auto !important;
-    height: auto;
+    height    : auto;
 }
 
 .pg-viewer-wrapper {
     overflow: unset !important;
-    width: 800px;
+    width   : 800px;
 }
 
 .react-grid-Canvas {
-    height: auto !important;
+    height  : auto !important;
     overflow: unset !important;
 }
 
 .pdf-canvas {
     overflow-y: unset;
-    height: auto;
+    height    : auto;
 }
 
-.pdf-canvas > canvas {
-    width: auto;
+.pdf-canvas>canvas {
+    width     : auto;
     overflow-y: scroll;
 }
 
 .react-grid-Container {
-    width: 800px !important;
+    width : 800px !important;
     height: 500px;
 }
 
@@ -87,5 +98,15 @@ header.MuiPaper-root .MuiCircularProgress-indeterminate {
 
 .mq-dataset-results {
     overflow-y: scroll;
-    height: 150px;
+    height : 150px;
+}
+
+@media screen and (max-width: 600px) {
+    .MuiPaper-rounded {
+        margin-right: 0 !important;
+    }
+
+    .recharts-wrapper {
+        width: 95vw !important;
+    }
 }

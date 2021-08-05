@@ -62,9 +62,6 @@ export const styles = makeStyles({
         }
     },
     listBlock : {
-        "& .MuiPaper-rounded:nth-child(1)": {
-            width: 'auto !important'
-        },
         "& div:nth-child(2)": {
             flexDirection: 'row-reverse',
             "& .MuiPaper-rounded": {
@@ -82,6 +79,11 @@ export const styles = makeStyles({
                 }
             }
         },
+    },
+    RaTopToolbar: {
+        root: {
+            backgroundColor: 'red'
+        }
     },
     button: {
         border: '1px solid #e0e0e0',
