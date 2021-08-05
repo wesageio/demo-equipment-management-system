@@ -59,8 +59,8 @@ const ImapAccountFilter = (props) => {
                     />
 
                 </Filter>
-                <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
-                <Filter {...props}>
+                <p style={{ textAlign: 'center', margin: '0', paddingTop: '10px' }}>Reference fields</p>
+                <Filter style={{marginTop: '0'}} {...props}>
                     <ReferenceInput
                         label="Property"
                         source="property"
