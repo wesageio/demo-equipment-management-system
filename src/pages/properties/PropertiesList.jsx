@@ -6,7 +6,6 @@ import {
     Filter,
     EditButton,
     NumberField,
-    NumberInput,
     TextField,
     TextInput,
     DateField,
