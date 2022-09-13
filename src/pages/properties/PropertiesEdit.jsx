@@ -43,6 +43,11 @@ export const PropertiesEdit = props => {
                                     formClassName={classes.editCell}
                                     fullWidth
                                 />
+                                <TextInput source="serialNumber"
+                                    className={isSmall ? '' : classes.editField}
+                                    formClassName={classes.editCell}
+                                    fullWidth
+                                />
                                 <SelectInput source="category"
                                     choices={[
                                         { id: 'Furniture', name: 'Furniture' },
@@ -75,7 +80,7 @@ export const PropertiesEdit = props => {
                                 <CountNumberInput label="Purchase cost ($)" source="purchaseCost"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
-                                />  
+                                />
                                 <CountNumberInput label="Warranty (month)" source="warranty"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}

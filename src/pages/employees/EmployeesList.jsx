@@ -62,7 +62,7 @@ const ImapAccountFilter = (props) => {
                 <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
                 <Filter style={{marginTop: '0', padding: '5px 5px'}} {...props}>
                     <ReferenceInput
-                        label="Property"
+                        label="Properties"
                         source="property"
                         reference="properties"
                         allowEmpty={false}
@@ -81,7 +81,7 @@ const ImapAccountFilter = (props) => {
                         />
                     </ReferenceInput>
                     <ReferenceInput
-                        label="Organization"
+                        label="Project"
                         source="organization"
                         reference="organizations"
                         allowEmpty={false}
@@ -124,14 +124,14 @@ const DataList = (props) => {
             <TextField source="email" />
             <TextField source="gender" />
             <ReferenceField
-                label="Organization"
+                label="Project"
                 source="organization"
                 reference="organizations"
             >
                 <FunctionField render={record => `${record.name}`} />
             </ReferenceField>
             <ReferenceArrayField
-                label="Property"
+                label="Properties"
                 source="property"
                 reference="properties"
             >

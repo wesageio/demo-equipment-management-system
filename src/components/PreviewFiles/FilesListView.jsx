@@ -35,6 +35,7 @@ export const FilesListView = ({ record, showName }) => {
                 <AliceCarousel
                     mouseTracking={true}
                     disableButtonsControls={true}
+                    autoWidth={'100%'}
                 >
                     {
                         record.attachments.map((item, index) => {

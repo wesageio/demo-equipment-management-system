@@ -4,9 +4,11 @@ import moment from 'moment';
 
 import { Line, LineChart, XAxis, CartesianGrid, Tooltip, YAxis } from 'recharts';
 
-export const GraphList = ({style}) => {
+export const GraphList = ({ style }) => {
     const [users, setUsers] = useState([]);
-    const [year, setYear] = useState('2021')
+    const currentYear = (new Date()).getFullYear();
+    const [year, setYear] = useState(currentYear.toString());
+    const years = Array.from(new Array(20), (val, index) => index + currentYear);
     const dataProvider = useDataProvider();
     useEffect(async () => {
         const { data } = await dataProvider.getList('properties', {
@@ -33,24 +35,20 @@ export const GraphList = ({style}) => {
         <div style={style}>
             <select
                 style={{
-                    position: 'absolute',
-                    top: '5px',
                     width: '200px',
                     padding: '0px',
                     fontSize: '20px',
                     borderRadius: '5px',
-                    right: '20px',
                     backgroundColor: 'transparent',
                 }}
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
             >
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
+                {
+                    years.map((year, index) => {
+                        return <option key={`year${index}`} value={year}>{year}</option>
+                    })
+                }
             </select>
             <LineChart
                 width={600}

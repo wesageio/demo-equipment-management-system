@@ -11,7 +11,7 @@ const NavBar = props => {
     return (
         <AppBar {...props} className={root}>
             <Menu />
-            <ChangeTheme />
+            {/* <ChangeTheme /> */}
         </AppBar>
     );
 };

@@ -34,6 +34,11 @@ export const PropertiesCreate = props => {
                                     formClassName={classes.editCell}
                                     fullWidth
                                 />
+                                <TextInput source="serialNumber"
+                                    className={isSmall ? '' : classes.editField}
+                                    formClassName={classes.editCell}
+                                    fullWidth
+                                />
                                 <SelectInput source="category"
                                     choices={[
                                         { id: 'Furniture', name: 'Furniture' },

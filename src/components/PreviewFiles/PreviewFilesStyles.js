@@ -18,8 +18,8 @@ export const previewStyles = makeStyles({
         cursor: 'pointer',
     },
     imageBlock: {
-        width: '40px',
-        height: '40px',
+        width: '20px',
+        height: '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -27,7 +27,7 @@ export const previewStyles = makeStyles({
     attachmentName: {
         maxWidth: '130px',
         minWidth: '50px',
-        width: '120px',
+        width: 'max-content',
         color: '#3c8dbc',
         fontSize: '15px',
         textAlign: 'right',
@@ -39,7 +39,8 @@ export const previewStyles = makeStyles({
             backgroundColor: 'transparent',
             boxShadow: 'unset',
             margin: '0',
-            height: 'auto'
+            height: 'auto',
+            width: 'fit-content'
         },
         "& .alice-carousel__next-btn": {
             textAlign: 'left'

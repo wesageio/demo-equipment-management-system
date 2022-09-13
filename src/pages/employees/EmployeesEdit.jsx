@@ -103,11 +103,11 @@ export const EmployeesEdit = props => {
                                     Additional information
                                 </Typography>
                                 <ReferenceArrayInput
-                                    fullWidth label="Property" source="property" reference="properties">
+                                    fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText="name" />
                                 </ReferenceArrayInput>
                                 <ReferenceInput
-                                    fullWidth label="Organization" source="organization" reference="organizations">
+                                    fullWidth label="Project" source="organization" reference="organizations">
                                     <AutocompleteInput suggestionLimit={5} resettable={true} allowEmpty={false} optionText="name" />
                                 </ReferenceInput>
                             </Box>

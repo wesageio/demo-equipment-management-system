@@ -45,11 +45,11 @@ export const Welcome = () => {
             <Box display="flex">
                 <Box flex="1">
                     <Typography variant="h5" component="h2" gutterBottom>
-                        Welcome to the assets administration demo
+                        Welcome to Wesage - Inventroy administration
                     </Typography>
                     <Box maxWidth="40em">
                         <Typography variant="body1" component="p" gutterBottom>
-                            This is the admin of an equipment management system. Feel free to explore and modify the data.
+                            This is the admin of an equipment management system.
                         </Typography>
                     </Box>
                     <CardActions className={classes.actions}>

@@ -31,14 +31,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const CardWithIcon = props => {
-    const { icon, title, subtitle, to, children } = props;
+    const { title, subtitle, to, children } = props;
     const classes = useStyles(props);
     return (
         <Card className={classes.card}>
             <Link to={to}>
                 <div className={classes.main}>
-                    <Box width="3em" className="icon">
-                        {createElement(icon, { fontSize: 'large' })}
+                    <Box width="3em" style={{fontSize: '25px'}} className="icon">
+                        ֏
                     </Box>
                     <Box textAlign="right">
                         <Typography

@@ -82,12 +82,11 @@ const Dashboard = () => {
     }, [dataProvider]);
 
     return isXSmall || isSmall ? (
-        <div style={{display: 'flex', width: '100%'}}>
-            <div style={{ width: '100%'}}>
+        <div style={{ display: 'flex', width: '100%' }}>
+            <div style={{ width: '100%' }}>
                 <Welcome />
                 <CardWithIcon
                     to="/properties"
-                    icon={DollarIcon}
                     title='Properties total cost'
                     subtitle={count}
                 />
@@ -101,7 +100,6 @@ const Dashboard = () => {
                 <div style={{ width: '50%', marginRight: '10px' }}>
                     <CardWithIcon
                         to="/properties"
-                        icon={DollarIcon}
                         title='Properties total cost'
                         subtitle={count}
                     />

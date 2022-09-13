@@ -27,6 +27,7 @@ const PropertiesFilter = (props) => (
         <CardContent>
             <Filter {...props}>
                 <TextInput label="Name" source="name" alwaysOn />
+                <TextInput label="Serial number" source="serialNumber" alwaysOn />
                 <SelectInput label="Category" source="category"
                     choices={[
                         { id: 'Furniture', name: 'Furniture' },
@@ -74,10 +75,11 @@ const DataList = (props) => {
     return (
         <Datagrid className={rootTable} hasBulkActions={true}>
             <TextField source="name" />
+            <TextField source="serialNumber" />
             <TextField source="category" />
             <TextField source="description" />
             <DateField source="purchaseDate" />
-            <NumberField source="purchaseCost" />
+            <NumberField source="purchaseCost" label="Purchase cost ֏"/>
             <NumberField source="warranty" />
             <FilesListField label="Attachments" record={props.resource} />
             <TextField source="status" />

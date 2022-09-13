@@ -100,11 +100,11 @@ export const EmployeesCreate = props => {
                                     Additional information
                                 </Typography>
                                 <ReferenceArrayInput allowEmpty
-                                    fullWidth label="Property" source="property" reference="properties">
+                                    fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText="name"/>
                                 </ReferenceArrayInput>
                                 <ReferenceInput allowEmpty
-                                    fullWidth label="Organization" source="organization" reference="organizations">
+                                    fullWidth label="Project" source="organization" reference="organizations">
                                     <AutocompleteInput suggestionLimit={5} allowEmpty={false} optionText="name" />
                                 </ReferenceInput>
                             </Box>

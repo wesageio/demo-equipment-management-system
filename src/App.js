@@ -41,12 +41,13 @@ const App = () => {
                 create={EmployeesCreate}
             />
             <Resource name="properties"
-                options={{ label: 'Equipments' }}
+                options={{ label: 'Properties' }}
                 list={PropertiesList}
                 create={PropertiesCreate}
                 edit={PropertiesEdit}
             />
             <Resource name="organizations"
+                options={{ label: 'Projects' }}
                 list={OrganizationsList}
                 create={OrganizationsCreate}
                 edit={OrganizationsEdit}

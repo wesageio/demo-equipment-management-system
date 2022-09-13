@@ -9,6 +9,9 @@ body {
     overflow-x: hidden;
 }
 
+.datagrid-body tr:nth-child(even) {background: #cccccc8a}
+.datagrid-body tr:nth-child(odd) {background: #FFF}
+
 .disabled {
     opacity: 0.5;
     cursor : not-allowed !important;
