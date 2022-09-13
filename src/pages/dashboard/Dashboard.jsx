@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 import { useDataProvider } from 'react-admin';
 import { useMediaQuery, Card, Link } from '@material-ui/core';
-import DollarIcon from '@material-ui/icons/AttachMoney';
 
 import packageJson from '../../../package.json';
 import { Welcome } from './widgets/Welcome';
