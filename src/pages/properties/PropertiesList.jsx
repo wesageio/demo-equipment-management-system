@@ -26,6 +26,7 @@ const PropertiesFilter = (props) => (
     <Card className={props.card}>
         <CardContent>
             <Filter {...props}>
+                <TextInput label="Code" source="code" alwaysOn />
                 <TextInput label="Name" source="name" alwaysOn />
                 <TextInput label="Serial number" source="serialNumber" alwaysOn />
                 <SelectInput label="Category" source="category"
@@ -74,6 +75,7 @@ const DataList = (props) => {
     const { rootTable } = styles();
     return (
         <Datagrid className={rootTable} hasBulkActions={true}>
+            <TextField source="code" />
             <TextField source="name" />
             <TextField source="serialNumber" />
             <TextField source="category" />
