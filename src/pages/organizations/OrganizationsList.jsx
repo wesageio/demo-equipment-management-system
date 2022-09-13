@@ -14,7 +14,6 @@ import { styles } from './OrganizationsStyles';
 import { RowsPerPage } from '../../components/Pagination/Pagination';
 import { OrganizationsMobileList } from './OrganizationsMobileList';
 import { Empty } from '../../components/Toolbar/EmptyList';
-import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
 import { ListActions, SearchAll } from '../../components/Toolbar/TopBar';
 
 
@@ -61,7 +60,7 @@ export const OrganizationsList = (props) => {
             aside={!isSmall && <OrganizationsFilter className={card} />}
             className={listBlock}
             empty={<Empty />}
-            filters={<SearchAll style={{margin: 0, alignItems: 'center'}} />}
+            filters={<SearchAll style={{ margin: 0, alignItems: 'center' }} />}
             actions={<ListActions />}
             {...props}
             perPage={count}

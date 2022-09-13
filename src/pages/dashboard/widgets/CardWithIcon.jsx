@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 export const CardWithIcon = props => {
     const { title, subtitle, to, children } = props;
     const classes = useStyles(props);
+    console.log(subtitle)
     return (
         <Card className={classes.card}>
             <Link to={to}>
@@ -47,9 +48,11 @@ export const CardWithIcon = props => {
                         >
                             {title}
                         </Typography>
-                        <Typography variant="h5" component="h2">
-                            {subtitle || ' '}
-                        </Typography>
+                        {subtitle &&
+                            <Typography variant="h5" component="h2">
+                                {subtitle.toLocaleString() + ' դր․' || ' '}
+                            </Typography>
+                        }
                     </Box>
                 </div>
             </Link>

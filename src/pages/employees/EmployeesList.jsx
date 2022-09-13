@@ -8,7 +8,6 @@ import {
     Filter,
     TextInput,
     DateInput,
-    ReferenceField,
     FunctionField,
     ReferenceInput,
     AutocompleteInput,
@@ -32,7 +31,7 @@ const ImapAccountFilter = (props) => {
     return (
         <Card className={props.card}>
             <CardContent>
-                <Filter style={{padding: '15px 5px'}} {...props}>
+                <Filter style={{ padding: '15px 5px' }} {...props}>
                     <TextInput label="First name" source="firstName" alwaysOn />
                     <TextInput label="Surname" source="surname" alwaysOn />
                     <TextInput label="Email" source="email" alwaysOn />
@@ -60,7 +59,7 @@ const ImapAccountFilter = (props) => {
 
                 </Filter>
                 <p style={{ textAlign: 'center', margin: '0' }}>Reference fields</p>
-                <Filter style={{marginTop: '0', padding: '5px 5px'}} {...props}>
+                <Filter style={{ marginTop: '0', padding: '5px 5px' }} {...props}>
                     <ReferenceInput
                         label="Properties"
                         source="property"
@@ -123,13 +122,15 @@ const DataList = (props) => {
             <DateField source="dateOfBirth" />
             <TextField source="email" />
             <TextField source="gender" />
-            <ReferenceField
-                label="Project"
+            <ReferenceArrayField
+                label="Projects"
                 source="organization"
                 reference="organizations"
             >
-                <FunctionField render={record => `${record.name}`} />
-            </ReferenceField>
+                <SingleFieldList style={{ margin: '0', flexDirection: 'column' }}>
+                    <TextField source="name" />
+                </SingleFieldList>
+            </ReferenceArrayField>
             <ReferenceArrayField
                 label="Properties"
                 source="property"

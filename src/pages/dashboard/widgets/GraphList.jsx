@@ -58,7 +58,7 @@ export const GraphList = ({ style }) => {
             >
                 <YAxis />
                 <XAxis dataKey="month" />
-                <Tooltip />
+                <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value) + ' դր․'}/>
                 <CartesianGrid stroke="#f5f5f5" />
                 <Line type="monotone" key={0} dataKey='Total' stroke='green' yAxisId={0} />
             </LineChart>

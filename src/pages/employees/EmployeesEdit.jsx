@@ -3,14 +3,12 @@ import {
     Edit,
     SimpleForm,
     TextInput,
-    ReferenceInput,
     SelectInput,
     NullableBooleanInput,
     required,
     DateInput,
     ReferenceArrayInput,
     AutocompleteArrayInput,
-    AutocompleteInput,
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
@@ -106,13 +104,14 @@ export const EmployeesEdit = props => {
                                     Additional information
                                 </Typography>
                                 <ReferenceArrayInput
+                                    filter={{ employee: '' }}
                                     fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer} />
                                 </ReferenceArrayInput>
-                                <ReferenceInput
+                                <ReferenceArrayInput
                                     fullWidth label="Project" source="organization" reference="organizations">
-                                    <AutocompleteInput suggestionLimit={5} resettable={true} allowEmpty={false} optionText="name" />
-                                </ReferenceInput>
+                                    <AutocompleteArrayInput suggestionLimit={5} resettable={true} allowEmpty={false} optionText="name" />
+                                </ReferenceArrayInput>
                             </Box>
                         </Box>
                     </CardContent>

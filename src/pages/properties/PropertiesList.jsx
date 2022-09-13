@@ -9,7 +9,9 @@ import {
     TextField,
     TextInput,
     DateField,
+    ReferenceField,
     DateInput,
+    FunctionField,
     SelectInput,
 } from 'react-admin';
 import { Card, CardContent, useMediaQuery } from '@material-ui/core';
@@ -84,6 +86,13 @@ const DataList = (props) => {
             <NumberField source="purchaseCost" label="Purchase cost ֏"/>
             <NumberField source="warranty" />
             <FilesListField label="Attachments" record={props.resource} />
+            <ReferenceField
+                label="Employee"
+                source="employee"
+                reference="employees"
+            >
+                <FunctionField render={record => `${record.firstName + ' ' + record.surname}`} />
+            </ReferenceField>
             <TextField source="status" />
             <EditButton label='' />
         </Datagrid>

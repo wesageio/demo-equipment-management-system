@@ -5,12 +5,10 @@ import {
     TextInput,
     SelectInput,
     NullableBooleanInput,
-    ReferenceInput,
     required,
     DateInput,
     ReferenceArrayInput,
     AutocompleteArrayInput,
-    AutocompleteInput
 } from 'react-admin';
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 
@@ -102,14 +100,14 @@ export const EmployeesCreate = props => {
                                 <Typography variant="h6" gutterBottom>
                                     Additional information
                                 </Typography>
-                                <ReferenceArrayInput allowEmpty
+                                <ReferenceArrayInput filter={{ employee: '' }} allowEmpty
                                     fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer}/>
                                 </ReferenceArrayInput>
-                                <ReferenceInput allowEmpty
+                                <ReferenceArrayInput allowEmpty
                                     fullWidth label="Project" source="organization" reference="organizations">
-                                    <AutocompleteInput suggestionLimit={5} allowEmpty={false} optionText="name" />
-                                </ReferenceInput>
+                                    <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText="name" />
+                                </ReferenceArrayInput>
                             </Box>
                         </Box>
                     </CardContent>
