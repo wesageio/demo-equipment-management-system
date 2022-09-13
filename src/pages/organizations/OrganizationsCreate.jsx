@@ -12,6 +12,7 @@ import { CountNumberInput } from '../../components/InputFields/CountNumberInput'
 import { EmailInput } from '../../components/InputFields/EmailInput';
 import LocationInput from '../../components/InputFields/LocationInput';
 import { WebSiteInput } from '../../components/InputFields/WebSiteInput';
+import { formatText } from '../../utils/utils';
 
 export const OrganizationsCreate = props => {
     const classes = styles();
@@ -31,7 +32,7 @@ export const OrganizationsCreate = props => {
                                         flex={1}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="name" fullWidth />
+                                        <TextInput format={formatText} required source="name" fullWidth />
                                     </Box>
                                     <Box
                                         flex={1}

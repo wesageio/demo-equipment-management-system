@@ -15,9 +15,12 @@ import {
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 
 import { styles } from './EmployeesStyles';
+import { formatText } from '../../utils/utils';
 
 export const EmployeesCreate = props => {
     const classes = styles();
+
+    const optionRenderer = choice => `${choice.name} - ${choice.code}`;
 
     return (
         <Create {...props}>
@@ -34,7 +37,7 @@ export const EmployeesCreate = props => {
                                         flex={1}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="firstName"
+                                        <TextInput format={formatText} required source="firstName"
                                             fullWidth
                                         />
                                     </Box>
@@ -42,7 +45,7 @@ export const EmployeesCreate = props => {
                                         flex={1}
                                         ml={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="surname"
+                                        <TextInput format={formatText} required source="surname"
                                             fullWidth
                                         />
                                     </Box>
@@ -68,7 +71,7 @@ export const EmployeesCreate = props => {
                                         <DateInput source="dateOfBirth" fullWidth />
                                     </Box>
                                 </Box>
-                                <TextInput required source="email"
+                                <TextInput format={formatText} required source="email"
                                     fullWidth
                                 />
                                 <Typography variant="h6" gutterBottom>
@@ -101,7 +104,7 @@ export const EmployeesCreate = props => {
                                 </Typography>
                                 <ReferenceArrayInput allowEmpty
                                     fullWidth label="Properties" source="property" reference="properties">
-                                    <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText="name"/>
+                                    <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer}/>
                                 </ReferenceArrayInput>
                                 <ReferenceInput allowEmpty
                                     fullWidth label="Project" source="organization" reference="organizations">

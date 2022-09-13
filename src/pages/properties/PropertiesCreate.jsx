@@ -15,10 +15,12 @@ import { Box, Typography, Card, CardContent, useMediaQuery } from '@material-ui/
 import { styles } from './PropertiesStyles';
 import { FilesCreateEdit } from '../../components/PreviewFiles/FilesCreateEdit';
 import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
+import { formatText } from '../../utils/utils';
 
 export const PropertiesCreate = props => {
     const classes = styles();
     const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
+
     return (
         <Create {...props}>
             <SimpleForm redirect="list" className={classes.createForm}>
@@ -29,12 +31,12 @@ export const PropertiesCreate = props => {
                                 <Typography variant="h6" gutterBottom>
                                     Information
                                 </Typography>
-                                <TextInput required source="name"
+                                <TextInput format={formatText} required source="name"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth
                                 />
-                                <TextInput source="serialNumber"
+                                <TextInput format={formatText} source="serialNumber"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth
@@ -52,7 +54,7 @@ export const PropertiesCreate = props => {
                                     validate={[required()]}
                                     fullWidth
                                 />
-                                <TextInput multiline source="description"
+                                <TextInput format={formatText} multiline source="description"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth

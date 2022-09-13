@@ -9,11 +9,12 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 
 import { styles } from './OrganizationsStyles';
 import BackButton from '../../components/BackButton';
-import LocationInput from '../../components/InputFields/LocationInput';
+// import LocationInput from '../../components/InputFields/LocationInput';
 import { WebSiteInput } from '../../components/InputFields/WebSiteInput';
 import { EditToolbar } from '../../components/Toolbar/EditToolbar';
 import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
 import { PhoneNumberInput } from '../../components/InputFields/PhoneNumberInput';
+import { formatText } from '../../utils/utils';
 
 
 export const OrganizationsEdit = props => {
@@ -38,7 +39,7 @@ export const OrganizationsEdit = props => {
                                         flex={1}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="name" fullWidth />
+                                        <TextInput format={formatText} required source="name" fullWidth />
                                     </Box>
                                     <Box
                                         flex={1}
@@ -57,7 +58,8 @@ export const OrganizationsEdit = props => {
                                         flex={1}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <LocationInput label="Location" source="location" />
+                                        <TextInput required source="location" fullWidth />
+                                        {/* <LocationInput label="Location" source="location" /> */}
                                     </Box>
                                     <Box
                                         flex={1}

@@ -18,10 +18,13 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 import { styles } from './EmployeesStyles';
 import BackButton from '../../components/BackButton';
 import { EditToolbar } from '../../components/Toolbar/EditToolbar';
+import { formatText } from '../../utils/utils';
 
 
 export const EmployeesEdit = props => {
     const classes = styles();
+
+    const optionRenderer = choice => `${choice.name} - ${choice.code}`;
 
     return (
         <Edit undoable={false} {...props}>
@@ -42,7 +45,7 @@ export const EmployeesEdit = props => {
                                         flex={1}
                                         mr={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="firstName"
+                                        <TextInput format={formatText} required source="firstName"
                                             fullWidth
                                         />
                                     </Box>
@@ -50,7 +53,7 @@ export const EmployeesEdit = props => {
                                         flex={1}
                                         ml={{ xs: 0, sm: '0.5em' }}
                                     >
-                                        <TextInput required source="surname"
+                                        <TextInput format={formatText} required source="surname"
                                             fullWidth
                                         />
                                     </Box>
@@ -76,7 +79,7 @@ export const EmployeesEdit = props => {
                                         <DateInput source="dateOfBirth" fullWidth />
                                     </Box>
                                 </Box>
-                                <TextInput required source="email"
+                                <TextInput format={formatText} required source="email"
                                     fullWidth
                                 />
                                 <Typography variant="h6" gutterBottom>
@@ -104,7 +107,7 @@ export const EmployeesEdit = props => {
                                 </Typography>
                                 <ReferenceArrayInput
                                     fullWidth label="Properties" source="property" reference="properties">
-                                    <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText="name" />
+                                    <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer} />
                                 </ReferenceArrayInput>
                                 <ReferenceInput
                                     fullWidth label="Project" source="organization" reference="organizations">

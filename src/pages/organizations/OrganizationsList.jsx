@@ -27,7 +27,6 @@ const OrganizationsFilter = (props) => (
                 <TextInput label="Email" source="email" alwaysOn />
                 <TextInput label="Location" source="location" alwaysOn />
                 <TextInput label="Website" source="website" alwaysOn />
-                <CountNumberInput label="Workers" source="workers" alwaysOn />
             </Filter>
         </CardContent>
     </Card>
@@ -42,7 +41,6 @@ const DataList = () => {
             <NumberField source="email" />
             <TextField source="location" />
             <TextField source="website" />
-            <TextField source="workers" />
             <EditButton label='' />
         </Datagrid>
     )

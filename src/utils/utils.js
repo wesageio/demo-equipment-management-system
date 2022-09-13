@@ -12,6 +12,10 @@ export const getUpdatedData = (oldData, newData) => {
     }
 }
 
+export const formatText = (value) => {
+    return value?.trim();
+}
+
 export const convertFileToBase64 = file => {
     return Promise.all(file.filter((el) => el.path !== null).map(item => {
         if (item.path.hasOwnProperty('rawFile')) {

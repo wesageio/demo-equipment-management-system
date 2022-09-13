@@ -9,6 +9,7 @@ import {
     DateInput,
     required,
     SelectInput,
+    TextField,
 } from 'react-admin';
 import { Box, Typography, CardContent, Card, useMediaQuery } from '@material-ui/core';
 import BackIcon from '@material-ui/icons/ArrowBack';
@@ -18,6 +19,7 @@ import { FilesCreateEdit } from '../../components/PreviewFiles/FilesCreateEdit';
 import { CountNumberInput } from '../../components/InputFields/CountNumberInput';
 import BackButton from '../../components/BackButton';
 import { EditToolbar } from '../../components/Toolbar/EditToolbar';
+import { formatText } from '../../utils/utils';
 
 
 export const PropertiesEdit = props => {
@@ -36,14 +38,15 @@ export const PropertiesEdit = props => {
                         <Box display={{ md: 'block', lg: 'flex' }}>
                             <Box flex={2} mr={{ md: 0, lg: '1em' }} className={classes.box}>
                                 <Typography variant="h6" gutterBottom>
-                                    Information
+                                    Information -
+                                    <TextField format={formatText} source="code"/>
                                 </Typography>
-                                <TextInput required source="name"
+                                <TextInput format={formatText} required source="name"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth
                                 />
-                                <TextInput source="serialNumber"
+                                <TextInput format={formatText} source="serialNumber"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth
@@ -63,7 +66,7 @@ export const PropertiesEdit = props => {
                                     validate={[required()]}
                                     fullWidth
                                 />
-                                <TextInput multiline source="description"
+                                <TextInput format={formatText} multiline source="description"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                     fullWidth
