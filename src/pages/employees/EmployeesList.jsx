@@ -69,7 +69,7 @@ const ImapAccountFilter = (props) => {
                         alwaysOn
                     >
                         <AutocompleteInput
-                            optionText={(record) => record.name}
+                            optionText={(record) => record.name + ' ' + record.code}
                             matchSuggestion={(filterValue, choice) => {
                                 if (filterValue) {
                                     return choice.name.toLowerCase().match(filterValue.toLowerCase())

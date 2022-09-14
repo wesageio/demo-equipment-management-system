@@ -60,6 +60,7 @@ export const PropertiesEdit = props => {
                                         { id: 'PC', name: 'PC' },
                                         { id: 'Keyboard', name: 'Keyboard' },
                                         { id: 'Mouse', name: 'Mouse' },
+                                        { id: 'Accessoire', name: 'Accessoire' }
                                     ]}
                                     optionText="name"
                                     optionValue="id"
@@ -80,7 +81,7 @@ export const PropertiesEdit = props => {
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />
-                                <CountNumberInput label="Purchase cost ($)" source="purchaseCost"
+                                <CountNumberInput label="Purchase cost (֏)" source="purchaseCost"
                                     className={isSmall ? '' : classes.editField}
                                     formClassName={classes.editCell}
                                 />

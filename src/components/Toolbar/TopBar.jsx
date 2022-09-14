@@ -9,7 +9,7 @@ import {
     FilterLiveSearch,
 } from 'react-admin';
 
-import ImportButtonCsv from '../../components/ImportCsv';
+// import ImportButtonCsv from '../../components/ImportCsv';
 
 export const ListActions = (props) => {
     const {
@@ -34,7 +34,7 @@ export const ListActions = (props) => {
                 context: 'button',
             })}
             <CreateButton basePath={basePath} />
-            <ImportButtonCsv {...props} />
+            {/* <ImportButtonCsv {...props} /> */}
         </TopToolbar>
     );
 };

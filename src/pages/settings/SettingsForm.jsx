@@ -61,13 +61,13 @@ export const SettingsForm = props => {
                                             flex={1}
                                             mr={{ xs: 0, sm: '0.5em' }}
                                         >
-                                            <CountNumberInput requiredField={false} label="Equipments per page" source="defaultNumberOfEquipments" />
+                                            <CountNumberInput requiredField={false} label="Properties per page" source="defaultNumberOfEquipments" />
                                         </Box>
                                         <Box
                                             flex={1}
                                             mr={{ xs: 0, sm: '0.5em' }}
                                         >
-                                            <CountNumberInput requiredField={false} label="Organizations per page" source="defaultNumberOfOrganizations" />
+                                            <CountNumberInput requiredField={false} label="Projects per page" source="defaultNumberOfOrganizations" />
                                         </Box>
                                     </Box>
                                 </Box>

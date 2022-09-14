@@ -100,7 +100,7 @@ export const EmployeesCreate = props => {
                                 <Typography variant="h6" gutterBottom>
                                     Additional information
                                 </Typography>
-                                <ReferenceArrayInput filter={{ employee: '' }} allowEmpty
+                                <ReferenceArrayInput filter={{ employee: null }} allowEmpty
                                     fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer}/>
                                 </ReferenceArrayInput>

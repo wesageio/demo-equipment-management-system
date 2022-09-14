@@ -77,16 +77,17 @@ const DataList = (props) => {
     const { rootTable } = styles();
     return (
         <Datagrid className={rootTable} hasBulkActions={true}>
-            <TextField source="code" />
-            <TextField source="name" />
-            <TextField source="serialNumber" />
-            <TextField source="category" />
-            <TextField source="description" />
-            <DateField source="purchaseDate" />
-            <NumberField source="purchaseCost" label="Purchase cost ֏"/>
-            <NumberField source="warranty" />
+            <TextField emptyText='-' source="code" />
+            <TextField emptyText='-' source="name" />
+            <TextField emptyText='-' source="serialNumber" />
+            <TextField emptyText='-' source="category" />
+            <TextField emptyText='-' source="description" />
+            <DateField emptyText='-' source="purchaseDate" />
+            <NumberField emptyText='-' source="purchaseCost" label="Purchase cost ֏"/>
+            <NumberField emptyText='-' source="warranty" />
             <FilesListField label="Attachments" record={props.resource} />
             <ReferenceField
+                emptyText='-'
                 label="Employee"
                 source="employee"
                 reference="employees"

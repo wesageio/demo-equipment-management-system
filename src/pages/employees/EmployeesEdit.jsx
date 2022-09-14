@@ -104,7 +104,7 @@ export const EmployeesEdit = props => {
                                     Additional information
                                 </Typography>
                                 <ReferenceArrayInput
-                                    filter={{ employee: '' }}
+                                    filter={{ employee: null }}
                                     fullWidth label="Properties" source="property" reference="properties">
                                     <AutocompleteArrayInput suggestionLimit={5} allowEmpty={false} optionText={optionRenderer} />
                                 </ReferenceArrayInput>

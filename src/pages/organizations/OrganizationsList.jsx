@@ -34,12 +34,14 @@ const OrganizationsFilter = (props) => (
 const DataList = () => {
     const { rootTable } = styles();
     return (
-        <Datagrid className={rootTable} optimized hasBulkActions={true}>
+        <Datagrid className={rootTable} hasBulkActions={true}>
             <TextField source="name" />
-            <NumberField source="telephone" />
-            <NumberField source="email" />
-            <TextField source="location" />
-            <TextField source="website" />
+            <NumberField emptyText='-' options={{ style: 'currency', currency: 'USD' }} source="cost" />
+            <NumberField emptyText='-' options={{ style: 'currency', currency: 'USD' }} source="price" />
+            <NumberField emptyText='-' options={{ style: 'percent' }} source="risk" />
+            <TextField emptyText='-' format={v => v + 'month'} source="duration" label="Duration month" />
+            <NumberField emptyText='-' options={{ style: 'currency', currency: 'USD' }} source="margin" />
+            <NumberField emptyText='-' options={{ style: 'currency', currency: 'USD' }} source="totalMargin" />
             <EditButton label='' />
         </Datagrid>
     )

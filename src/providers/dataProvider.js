@@ -1,6 +1,6 @@
 import { fetchUtils, HttpError } from 'react-admin';
 import Axios from 'axios';
-import { convertFileToBase64, getUpdatedData } from '../utils/utils';
+import { convertFileToBase64 } from '../utils/utils';
 
 const apiUrl = window.env ? window.env.REACT_APP_ADMIN_API : process.env.REACT_APP_ADMIN_API;
 const httpClient = fetchUtils.fetchJson;
@@ -61,22 +61,12 @@ export default {
     getMany: (resource, params) => {
         const query = `filter=${encodeURIComponent(JSON.stringify(params))}&limit=25&page=1&orderBy=id&orderDir=DESC`;
         const url = `${apiUrl}/${resource}?${query}`;
-        return Axios.get(url, { headers: getToken().headers }).then(({ json }) => ({
-            data: json ? json.data.map(resource => ({ ...resource, id: resource._id })) : [],
+        return Axios.get(url, getToken()).then(({ data }) => ({
+            data: data ? data.data : []
         }));
     },
 
     getManyReference: (resource) => {
-        // const { page, perPage } = params.pagination;
-        // const { field, order } = params.sort;
-        // const query = {
-        //     sort: JSON.stringify([field, order]),
-        //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-        //     filter: JSON.stringify({
-        //         ...params.filter,
-        //         [params.target]: params.id,
-        //     }),
-        // };
         const url = `${apiUrl}/${resource}`;
         return Axios.get(url, { headers: getToken().headers }).then(({ headers, json }) => ({
             data: json,
@@ -85,7 +75,7 @@ export default {
     },
 
     update: async (resource, params) => {
-        let body = getUpdatedData(params.previousData, params.data);
+        let body = params.data;
         if (resource === 'settings') {
             if (!body.hasOwnProperty('pass')) {
                 const settingsData = JSON.parse(localStorage.getItem('settings')) || {};
